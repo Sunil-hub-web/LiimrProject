@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/three">
+
+    <RelativeLayout
+        android:id="@+id/rel_color"
+        android:layout_width="@dimen/ninety"
+        android:layout_height="@dimen/eighty"
+        android:background="@color/back1">
+
+        <TextView
+            android:id="@+id/text_ShowTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="12AM - 2AM"
+            android:textColor="@color/white"
+            android:textSize="@dimen/twelve_size"
+            android:textAllCaps="true">
+
+        </TextView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

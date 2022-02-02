@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/two_hundred"
+        android:background="#800080">
+
+        <LinearLayout
+            android:id="@+id/ln1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="Liimr"
+                android:textColor="@color/white"
+                android:textSize="@dimen/fifty"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="The Service Makers"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twenty_size"></TextView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/r1"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_marginLeft="@dimen/ten">
+
+        <TextView
+            android:id="@+id/nav_Home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="Home"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:layout_marginLeft="@dimen/fifteen"
+            android:drawableLeft="@drawable/baseline_home"
+            android:drawablePadding="@dimen/ten"
+            android:layout_margin="@dimen/seven"></TextView>
+
+        <TextView
+            android:id="@+id/nav_Profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="My Profile"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/baseline_account_circle"
+            android:drawablePadding="@dimen/ten"
+            android:layout_margin="@dimen/seven"></TextView>
+
+        <TextView
+            android:id="@+id/nav_MyJobs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="My Job"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/job"
+            android:drawablePadding="@dimen/fifteen"
+            android:paddingLeft="@dimen/five"
+            android:layout_margin="@dimen/seven"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="Transaction"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/transaction"
+            android:drawablePadding="@dimen/twelve"
+            android:layout_margin="@dimen/seven"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="My Accounts"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/baseline_home"
+            android:drawablePadding="@dimen/ten"
+            android:layout_margin="@dimen/seven"></TextView>
+
+        <TextView
+            android:id="@+id/nav_Message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="My Messages"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/baseline_message"
+            android:drawablePadding="@dimen/ten"
+            android:layout_margin="@dimen/seven"></TextView>
+
+        <TextView
+            android:id="@+id/nav_Availability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="Availability"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/correct"
+            android:drawablePadding="@dimen/thirteen"
+            android:layout_margin="@dimen/seven"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="Services Categories"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/baseline_settings"
+            android:drawablePadding="@dimen/ten"
+            android:layout_margin="@dimen/seven"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="My Reviews and Ratings"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/baseline_home"
+            android:drawablePadding="@dimen/fifteen"
+            android:layout_margin="@dimen/seven"></TextView>
+
+       <!-- <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="Leades"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/baseline_home"
+            android:drawablePadding="@dimen/fifteen"
+            android:layout_margin="@dimen/seven"></TextView>-->
+
+      <!--  <TextView
+            android:id="@+id/nav_Aboutas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="About as"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/info_button"
+            android:drawablePadding="@dimen/fifteen"
+            android:layout_margin="@dimen/seven"></TextView>-->
+
+    </LinearLayout>
+
+
+</RelativeLayout>
