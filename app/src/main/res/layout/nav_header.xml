@@ -125,7 +125,7 @@
             android:drawablePadding="@dimen/ten"
             android:layout_margin="@dimen/seven"></TextView>
 
-        <TextView
+      <!--  <TextView
             android:id="@+id/nav_Availability"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -136,7 +136,7 @@
             android:textSize="@dimen/edittextsize"
             android:drawableLeft="@drawable/correct"
             android:drawablePadding="@dimen/thirteen"
-            android:layout_margin="@dimen/seven"></TextView>
+            android:layout_margin="@dimen/seven"></TextView>-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -159,7 +159,20 @@
             android:textColor="@color/black"
             android:textSize="@dimen/edittextsize"
             android:drawableLeft="@drawable/baseline_home"
-            android:drawablePadding="@dimen/fifteen"
+            android:drawablePadding="@dimen/ten"
+            android:layout_margin="@dimen/seven"></TextView>
+
+        <TextView
+            android:id="@+id/nav_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="Logout"
+            android:textColor="@color/black"
+            android:textSize="@dimen/edittextsize"
+            android:drawableLeft="@drawable/baseline_login"
+            android:drawablePadding="@dimen/ten"
             android:layout_margin="@dimen/seven"></TextView>
 
        <!-- <TextView

@@ -21,6 +21,32 @@
 
     </ScrollView>
 
+    <LinearLayout
+        android:id="@+id/cartempty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:visibility="gone">
 
+        <ImageView
+            android:id="@+id/image_NoResult"
+            android:layout_width="@dimen/two_hundred_fifty"
+            android:layout_height="@dimen/two_hundred_fifty"
+            android:layout_centerInParent="true"
+            android:src="@drawable/download"></ImageView>
+
+      <!--  <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/five"
+            android:text="No Job Founds"
+            android:textColor="@color/back1"
+            android:textSize="@dimen/twenty_size"
+            android:textStyle="bold"></TextView>-->
+
+    </LinearLayout>
 
 </RelativeLayout>

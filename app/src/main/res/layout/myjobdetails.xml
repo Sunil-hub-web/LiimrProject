@@ -50,14 +50,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_toLeftOf="@+id/image_click"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/fifteen"
+                    android:layout_marginTop="@dimen/twelve"
                     android:weightSum="2">
 
                     <TextView
@@ -65,10 +65,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/fifteen"
-                        android:layout_weight="1"
+                        android:layout_weight="0.8"
                         android:text="Category"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/edittextsize">
+                        android:textSize="@dimen/textsize">
 
                     </TextView>
 
@@ -89,7 +89,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/fifteen"
+                    android:layout_marginTop="@dimen/twelve"
                     android:weightSum="2">
 
                     <TextView
@@ -97,10 +97,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/fifteen"
-                        android:layout_weight="1"
+                        android:layout_weight="0.8"
                         android:text="Customer"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/edittextsize">
+                        android:textSize="@dimen/textsize">
 
                     </TextView>
 
@@ -118,44 +118,44 @@
 
                 </LinearLayout>
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/eighteen"
+                    android:layout_marginTop="@dimen/twelve"
                     android:weightSum="2">
 
                     <TextView
                         android:id="@+id/statues"
-                        android:layout_width="@dimen/hundred_fifty"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/fifteen"
-                        android:layout_weight="1.1"
+                        android:layout_weight="0.8"
                         android:text="Status"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/edittextsize">
+                        android:textSize="@dimen/textsize">
 
                     </TextView>
 
                     <RelativeLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/statues_bg"
-                        android:layout_toRightOf="@+id/statues"
-                        android:layout_marginLeft="@dimen/eight">
+                        >
 
                         <TextView
                             android:id="@+id/status"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/four"
-                            android:text="Paid"
+                            android:text="paid"
+                            android:padding="@dimen/seven"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/edittextsize">
+                            android:textSize="@dimen/textsize"
+                            android:background="@drawable/statues_bg">
 
                         </TextView>
                     </RelativeLayout>
 
-                </RelativeLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
-                android:layout_marginRight="@dimen/fifteen"
+                android:layout_marginRight="@dimen/ten"
                 android:src="@drawable/baseline_arrow_forward">
 
             </ImageView>

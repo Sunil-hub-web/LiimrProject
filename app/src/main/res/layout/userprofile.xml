@@ -20,6 +20,7 @@
                 android:background="#FFFFFF">
 
                 <TextView
+                    android:id="@+id/userId"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Li100233"
@@ -42,6 +43,7 @@
                 android:layout_marginTop="@dimen/twenty"/>
 
             <Button
+                android:id="@+id/image_change"
                 android:layout_width="@dimen/hundred_twenty"
                 android:layout_height="@dimen/thirty"
                 android:layout_gravity="center_horizontal"
@@ -181,7 +183,7 @@
                 </RelativeLayout>
 
             </LinearLayout>
-
+<!--
             <Button
                 android:id="@+id/btn_AvaiLabiLity"
                 android:layout_width="match_parent"
@@ -192,9 +194,10 @@
                 android:background="@drawable/livechart_bg"
                 android:text="AvaiLabiLity"
                 android:textColor="@color/white"
-                android:textSize="@dimen/edittextsize"></Button>
+                android:textSize="@dimen/edittextsize"></Button>-->
 
             <Button
+                android:id="@+id/btn_Updateaddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/thirty"
@@ -213,6 +216,18 @@
                 android:layout_marginTop="@dimen/twenty"
                 android:background="@drawable/livechart_bg"
                 android:text="Account Details"
+                android:textColor="@color/white"
+                android:textSize="@dimen/edittextsize"></Button>
+
+            <Button
+                android:id="@+id/btn_UpdateServices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/thirty"
+                android:layout_marginRight="@dimen/thirty"
+                android:layout_marginTop="@dimen/twenty"
+                android:background="@drawable/livechart_bg"
+                android:text="Update Services"
                 android:textColor="@color/white"
                 android:textSize="@dimen/edittextsize"></Button>
 

@@ -31,17 +31,18 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/twenty"
+                        android:layout_marginLeft="@dimen/edittextsize"
                         android:layout_weight="1"
                         android:text="1  Order Confirmation"
                         android:textColor="#1436F3"
-                        android:textSize="@dimen/sixteen"></TextView>
+                        android:textSize="@dimen/textsize"></TextView>
 
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="@dimen/forty"
                         android:layout_gravity="center"
                         android:layout_marginRight="@dimen/ten"
+                        android:layout_marginLeft="@dimen/five"
                         android:layout_toRightOf="@id/statues"
                         android:layout_weight="1"
                         android:background="@drawable/updateconfrom_bg">
@@ -83,11 +84,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/twenty"
+                        android:layout_marginLeft="@dimen/edittextsize"
                         android:layout_weight="1"
                         android:text="2  Techician Allocated"
                         android:textColor="#1436F3"
-                        android:textSize="@dimen/sixteen"></TextView>
+                        android:textSize="@dimen/textsize"></TextView>
 
                     <RelativeLayout
                         android:layout_width="0dp"
@@ -137,7 +138,7 @@
                         android:layout_weight="1"
                         android:text="3  Allocated Techician"
                         android:textColor="#1436F3"
-                        android:textSize="@dimen/sixteen"></TextView>
+                        android:textSize="@dimen/textsize"></TextView>
 
                     <RelativeLayout
                         android:id="@+id/rel_Pinverified"
@@ -210,7 +211,7 @@
                         android:layout_weight="1"
                         android:text="Techician Allocated"
                         android:textColor="#505151"
-                        android:textSize="@dimen/twenty_size"></TextView>
+                        android:textSize="@dimen/edittextsize"></TextView>
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
@@ -223,10 +224,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
 
-                            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
                                 android:id="@+id/profile_image"
-                                android:layout_width="@dimen/hundred_ten"
-                                android:layout_height="@dimen/hundred_ten"
+                                android:layout_width="@dimen/eighty"
+                                android:layout_height="@dimen/eighty"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/ten"
                                 android:src="@drawable/profileimage"
@@ -251,7 +253,18 @@
                                     android:layout_weight="1"
                                     android:text="Navin"
                                     android:textColor="#505151"
-                                    android:textSize="@dimen/twenty_size"></TextView>
+                                    android:textSize="@dimen/edittextsize"></TextView>
+
+                                <TextView
+                                    android:id="@+id/text_Contact"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/text_name"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="@dimen/ten"
+                                    android:text="contact :"
+                                    android:textColor="#505151"
+                                    android:textSize="@dimen/edittextsize"></TextView>
 
                                 <TextView
                                     android:id="@+id/text_contact"
@@ -260,20 +273,10 @@
                                     android:layout_below="@+id/text_name"
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="@dimen/ten"
-                                    android:text="contact :"
+                                    android:layout_toRightOf="@+id/text_Contact"
+                                    android:hint="7894561230"
                                     android:textColor="#505151"
-                                    android:textSize="@dimen/twenty_size"></TextView>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_below="@+id/text_name"
-                                    android:layout_gravity="center"
-                                    android:layout_marginLeft="@dimen/ten"
-                                    android:layout_toRightOf="@+id/text_contact"
-                                    android:text="7894561230"
-                                    android:textColor="#505151"
-                                    android:textSize="@dimen/twenty_size"></TextView>
+                                    android:textSize="@dimen/edittextsize"></TextView>
 
 
                             </RelativeLayout>
@@ -283,12 +286,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@+id/details"
-                                android:layout_marginTop="@dimen/ten"
                                 android:layout_toRightOf="@id/profile_image"
                                 android:numStars="5"
                                 android:rating="5"
-                                android:scaleX="0.6"
-                                android:scaleY="0.6"
+                                android:scaleX="0.5"
+                                android:scaleY="0.5"
                                 android:theme="@style/RatingBar" />
 
 
@@ -299,7 +301,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/twenty"
                         android:layout_marginBottom="@dimen/ten"
                         android:weightSum="2">
 
@@ -315,7 +316,7 @@
                             android:inputType="number"
                             android:paddingLeft="@dimen/ten"
                             android:textColor="#25297A"
-                            android:textSize="@dimen/edittextsize" />
+                            android:textSize="@dimen/textsize" />
 
                         <Button
                             android:id="@+id/btn_PinVerifyApply"
@@ -359,7 +360,7 @@
                         android:layout_weight="1"
                         android:text="4  Work Info / Bill Info"
                         android:textColor="#1436F3"
-                        android:textSize="@dimen/sixteen"></TextView>
+                        android:textSize="@dimen/textsize"></TextView>
 
                            <RelativeLayout
                                android:id="@+id/rel_WorkCompleted"
@@ -551,16 +552,16 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/twenty"
-                        android:layout_weight="1"
+                        android:layout_weight="0.7"
                         android:text="5  Payment"
                         android:textColor="#1436F3"
-                        android:textSize="@dimen/sixteen"></TextView>
+                        android:textSize="@dimen/textsize"></TextView>
 
                        <RelativeLayout
                            android:id="@+id/rel_PaymentTobe"
                            android:layout_width="0dp"
                            android:layout_weight="1.5"
-                           android:layout_height="@dimen/forty_five"
+                           android:layout_height="wrap_content"
                            android:layout_toRightOf="@id/statues"
                            android:background="@drawable/payment_bg"
                            android:layout_gravity="center"
@@ -571,9 +572,9 @@
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
                                android:gravity="center"
-                               android:layout_marginLeft="@dimen/ten"
-                               android:layout_centerVertical="true"
+                               android:layout_marginTop="@dimen/five"
                                android:text="Payment To be done Rs"
+                               android:layout_centerHorizontal="true"
                                android:textColor="#818080"
                                android:textStyle="bold"
                                android:textSize="@dimen/textsize">
@@ -584,11 +585,10 @@
                                android:id="@+id/priceAmount"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:gravity="center"
-                               android:layout_marginLeft="@dimen/five"
-                               android:layout_centerVertical="true"
+                               android:layout_margin="@dimen/three"
                                android:text="1500"
-                               android:layout_toRightOf="@+id/text"
+                               android:layout_centerHorizontal="true"
+                               android:layout_below="@+id/text"
                                android:textColor="#000000"
                                android:textStyle="bold"
                                android:textSize="@dimen/textsize">
@@ -603,6 +603,7 @@
 
 
             <LinearLayout
+                android:id="@+id/lin_payment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:weightSum="2"
@@ -629,6 +630,7 @@
                     android:textSize="@dimen/edittextsize"
                     android:textAllCaps="false"
                     android:textColor="@color/white"></Button>
+
             </LinearLayout>
 
             <!--<TextView

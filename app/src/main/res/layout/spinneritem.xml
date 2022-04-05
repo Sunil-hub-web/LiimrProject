@@ -12,6 +12,8 @@
     android:maxLines="1"
     android:paddingLeft="@dimen/twenty"
     android:paddingRight="@dimen/twenty"
+    android:paddingTop="@dimen/five"
+    android:paddingBottom="@dimen/five"
     android:textSize="@dimen/fifteen"
     android:drawableRight="@drawable/ic_keyboard_arrow_down_black_24dp"
     android:drawableTint="@color/textcol"

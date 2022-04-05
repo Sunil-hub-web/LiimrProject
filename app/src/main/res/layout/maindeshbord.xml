@@ -17,9 +17,10 @@
             android:background="#FFFFFF">
 
             <TextView
+                android:id="@+id/text_ShowName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome Renjith"
+                android:hint="Welcome Renjith"
                 android:textSize="@dimen/edittextsize"
                 android:textColor="@color/black"
                 android:layout_centerInParent="true">

@@ -27,95 +27,101 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_toLeftOf="@+id/update_Status"
+                    android:layout_marginBottom="@dimen/ten">
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/fifteen">
+                        android:layout_marginTop="@dimen/fifteen"
+                        android:weightSum="2"
+                        >
 
                         <TextView
                             android:id="@+id/Service"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.7"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/fifteen"
+                            android:layout_marginLeft="@dimen/ten"
                             android:text="Category"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/edittextsize">
+                            android:textSize="@dimen/textsize">
 
                         </TextView>
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/text_category"
+                            android:layout_width="0dp"
+                            android:layout_weight="1.3"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/fifty"
                             android:layout_toRightOf="@id/Service"
-                            android:text="Maintenance"
+                            android:text="Home Appliances"
                             android:textColor="@color/black"
                             android:textSize="@dimen/textsize">
 
                         </TextView>
 
 
-                    </RelativeLayout>
+                    </LinearLayout>
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/fifteen"
-                        android:layout_marginBottom="@dimen/ten">
+                        android:weightSum="3">
 
                         <TextView
                             android:id="@+id/statues"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/fifteen"
+                            android:layout_marginLeft="@dimen/ten"
                             android:text="Status"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/edittextsize">
+                            android:textSize="@dimen/textsize">
 
                         </TextView>
 
                         <RelativeLayout
-                            android:id="@+id/sts"
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/seventy"
-                            android:layout_toRightOf="@id/statues"
-                            android:background="@drawable/statues_bg">
+                            >
 
                             <TextView
                                 android:id="@+id/status_name"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_margin="@dimen/five"
-                                android:text="Paid"
+                                android:text="Awaiting Payment"
+                                android:padding="@dimen/seven"
                                 android:textColor="@color/white"
-                                android:textSize="@dimen/edittextsize">
+                                android:textSize="@dimen/twelve"
+                                android:background="@drawable/statues_bg">
 
                             </TextView>
                         </RelativeLayout>
 
-                        <TextView
-                            android:id="@+id/update_Status"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="@dimen/twenty"
-                            android:text="Update Status"
-                            android:layout_toRightOf="@+id/sts"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="@dimen/edittextsize">
-
-                        </TextView>
-
-                    </RelativeLayout>
-
+                    </LinearLayout>
                 </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/update_Status"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/ten"
+                    android:text="Update \n Status"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_gravity="right"
+                    android:textSize="@dimen/textsize">
+
+                </TextView>
 
             </RelativeLayout>
 
@@ -239,7 +245,7 @@
                             android:layout_marginLeft="@dimen/fifteen"
                             android:text="Customer"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/edittextsize">
+                            android:textSize="@dimen/textsize">
 
                         </TextView>
 
@@ -274,7 +280,7 @@
                             android:layout_marginLeft="@dimen/fifteen"
                             android:text="Booking Date"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/edittextsize">
+                            android:textSize="@dimen/textsize">
 
                         </TextView>
 
@@ -307,7 +313,7 @@
                             android:layout_marginLeft="@dimen/fifteen"
                             android:text="Time"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/edittextsize">
+                            android:textSize="@dimen/textsize">
 
                         </TextView>
 
@@ -404,7 +410,7 @@
                             android:layout_marginLeft="@dimen/fifteen"
                             android:text="Note"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/edittextsize">
+                            android:textSize="@dimen/textsize">
 
                         </TextView>
 

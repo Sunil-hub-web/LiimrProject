@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserLogin"
+    tools:context="com.in.apnisevatechinican.UserLogin"
     android:background="@color/white">
 
     <ScrollView
@@ -56,14 +56,16 @@
                     android:layout_marginTop="@dimen/twenty"
                     android:layout_marginRight="@dimen/twenty_five"
                     android:layout_marginBottom="@dimen/twenty"
-                    android:drawablePadding="@dimen/twenty_five"
                     android:ems="10"
+                    android:paddingLeft="@dimen/ten"
                     android:hint="Mobile No"
                     android:imeOptions="actionDone"
                     android:inputType="number"
+                    android:maxLength="10"
                     android:textColor="#25297A"
                     android:textSize="@dimen/twenty_size"
-                    android:textStyle="normal"/>
+                    android:textStyle="normal"
+                    android:backgroundTint="#800080"/>
 
                 <EditText
                     android:id="@+id/edit_Password"
@@ -73,14 +75,17 @@
                     android:layout_marginLeft="@dimen/twenty_five"
                     android:layout_marginRight="@dimen/twenty_five"
                     android:layout_marginBottom="@dimen/twenty"
-                    android:drawablePadding="@dimen/twenty_five"
+                    android:drawableRight="@drawable/visibility"
+                    android:paddingRight="@dimen/ten"
                     android:ems="10"
+                    android:paddingLeft="@dimen/ten"
                     android:hint="Password"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
-                    android:textColor="#0C0C0C"
+                    android:textColor="#25297A"
                     android:textSize="@dimen/twenty_size"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:backgroundTint="#800080"/>
 
             </LinearLayout>
 
@@ -93,7 +98,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="@dimen/fifteen"
                 android:text="Forgot Password ?"
-                android:textColor="#25297A"
+                android:textColor="#800080"
                 android:textSize="@dimen/edittextsize">
 
             </TextView>
@@ -137,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/login2"
                     android:text=" Sign Up"
-                    android:textColor="#B203A9F4"
+                    android:textColor="#800080"
                     android:textSize="@dimen/textsize"/>
 
 

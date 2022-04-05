@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserRegister"
+    tools:context="com.in.apnisevatechinican.UserRegister"
     android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:scrollbars="none">
 
         <RelativeLayout
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/ten"
-                android:text="Fill The Details &amp; create your account "
+                android:text="Fill the details &amp; create your account "
                 android:textColor="#5C5A5A"
                 android:textSize="@dimen/twenty_size">
 
@@ -51,54 +51,57 @@
                 <EditText
                     android:id="@+id/edit_fullname"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/forty_five"
                     android:layout_marginLeft="@dimen/twenty_five"
                     android:layout_marginTop="@dimen/twenty"
                     android:layout_marginRight="@dimen/twenty_five"
                     android:layout_marginBottom="@dimen/twenty"
-                    android:drawablePadding="@dimen/twenty"
                     android:ems="10"
                     android:hint="User Name"
                     android:imeOptions="actionDone"
                     android:inputType="text"
                     android:textColor="#25297A"
-                    android:textSize="@dimen/twenty_size"
+                    android:textSize="@dimen/edittextsize"
+                    android:paddingLeft="@dimen/ten"
                     android:textStyle="normal"
-                    />
+                    android:background="@drawable/box"/>
 
                 <EditText
                     android:id="@+id/edit_MobileNumber"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/forty_five"
                     android:layout_below="@id/edit_MobileNumber"
                     android:layout_marginLeft="@dimen/twenty_five"
                     android:layout_marginRight="@dimen/twenty_five"
                     android:layout_marginBottom="@dimen/twenty"
-                    android:drawablePadding="@dimen/thirty"
+                    android:textSize="@dimen/edittextsize"
+                    android:paddingLeft="@dimen/ten"
                     android:ems="10"
                     android:hint="Mobile No"
                     android:imeOptions="actionDone"
                     android:inputType="number"
                     android:textColor="#25297A"
-                    android:textSize="@dimen/twenty_size"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:maxLength="10"
+                    android:background="@drawable/box"/>
 
                 <EditText
                     android:id="@+id/edit_Email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/forty_five"
                     android:layout_marginLeft="@dimen/twenty_five"
                     android:layout_marginTop="@dimen/ten"
                     android:layout_marginRight="@dimen/twenty_five"
                     android:layout_marginBottom="@dimen/twenty"
-                    android:drawablePadding="@dimen/twenty_two"
+                    android:textSize="@dimen/edittextsize"
+                    android:paddingLeft="@dimen/ten"
                     android:ems="10"
                     android:hint="Email Id"
                     android:imeOptions="actionDone"
                     android:inputType="text"
                     android:textColor="#25297A"
-                    android:textSize="@dimen/twenty_size"
-                    android:textStyle="normal"/>
+                    android:textStyle="normal"
+                    android:background="@drawable/box"/>
 
                 <Spinner
                     android:id="@+id/WorkingCategory"
@@ -158,19 +161,42 @@
                 <EditText
                     android:id="@+id/edit_Password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/forty_five"
                     android:layout_below="@id/edit_MobileNumber"
                     android:layout_marginLeft="@dimen/twenty_five"
                     android:layout_marginRight="@dimen/twenty_five"
                     android:layout_marginBottom="@dimen/twenty"
-                    android:drawablePadding="@dimen/thirty"
+                    android:textSize="@dimen/edittextsize"
+                    android:drawableRight="@drawable/visibility"
+                    android:paddingRight="@dimen/ten"
+                    android:paddingLeft="@dimen/ten"
                     android:ems="10"
                     android:hint="Password"
                     android:imeOptions="actionDone"
                     android:inputType="textPassword"
                     android:textColor="#25297A"
-                    android:textSize="@dimen/twenty_size"
                     android:textStyle="normal"
+                    android:background="@drawable/box"/>
+
+                <EditText
+                    android:id="@+id/edit_ConfirmPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/forty_five"
+                    android:layout_below="@id/edit_MobileNumber"
+                    android:layout_marginLeft="@dimen/twenty_five"
+                    android:layout_marginRight="@dimen/twenty_five"
+                    android:layout_marginBottom="@dimen/twenty"
+                    android:textSize="@dimen/edittextsize"
+                    android:paddingLeft="@dimen/ten"
+                    android:ems="10"
+                    android:hint="ConfirmPassword"
+                    android:drawableRight="@drawable/visibility"
+                    android:paddingRight="@dimen/ten"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:textColor="#25297A"
+                    android:textStyle="normal"
+                    android:background="@drawable/box"
                     />
 
             </LinearLayout>
@@ -216,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:text="Terms of Service And Privacy Policy"
                     android:textStyle="bold"
-                    android:textColor="#B203A9F4"
+                    android:textColor="#800080"
                     android:textSize="@dimen/textsize"
                     android:paddingLeft="18dp"
                     android:layout_below="@id/login1"
@@ -263,7 +289,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/login2"
                     android:text=" Sign In"
-                    android:textColor="#B203A9F4"
+                    android:textColor="#800080"
                     android:textSize="@dimen/textsize"
                     android:textStyle="bold"
                     />
