@@ -14,9 +14,6 @@
           android:id="@+id/recyclerJobDetails"
           android:layout_marginTop="@dimen/ten">
 
-
-
-
       </androidx.recyclerview.widget.RecyclerView>
 
     </ScrollView>

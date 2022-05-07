@@ -146,11 +146,11 @@
                             android:id="@+id/status"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="paid"
+                            android:background="@drawable/statues_bg"
                             android:padding="@dimen/seven"
+                            android:text="paid"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/textsize"
-                            android:background="@drawable/statues_bg">
+                            android:textSize="@dimen/textsize">
 
                         </TextView>
                     </RelativeLayout>

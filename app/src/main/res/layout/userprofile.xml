@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
+           <!-- <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/forty"
                 android:background="#FFFFFF">
@@ -30,7 +30,7 @@
 
                 </TextView>
 
-            </RelativeLayout>
+            </RelativeLayout>-->
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
@@ -40,7 +40,7 @@
                 app:civ_border_color="#FF000000"
                 app:civ_border_width="2dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/twenty"/>
+                android:layout_marginTop="@dimen/thirty"/>
 
             <Button
                 android:id="@+id/image_change"
@@ -75,14 +75,14 @@
                         android:id="@+id/edit_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/twenty_size"
-                        android:background="@color/transparent"
-                        android:text="Renjith"
+                        android:layout_marginRight="@dimen/ten"
                         android:layout_toLeftOf="@id/text_edit"
+                        android:background="@color/transparent"
                         android:drawableLeft="@drawable/baseline_person"
                         android:drawablePadding="@dimen/twelve"
-                        android:layout_marginRight="@dimen/ten">
+                        android:text="Name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/twenty_size">
 
                     </EditText>
 
@@ -108,7 +108,7 @@
                     android:textColor="#000000"
                     android:textSize="@dimen/edittextsize"
                     android:background="@color/transparent"
-                    android:text="Renjith@pi-dgi.com"
+                    android:text="Email"
                     android:layout_marginTop="@dimen/twenty_five"
                     android:layout_marginLeft="@dimen/twenty"
                     android:layout_marginRight="@dimen/twenty"
@@ -124,7 +124,7 @@
                     android:textColor="#000000"
                     android:textSize="@dimen/edittextsize"
                     android:background="@color/transparent"
-                    android:text="9895518282"
+                    android:text="Mobile No"
                     android:inputType="number"
                     android:maxLength="10"
                     android:layout_toRightOf="@id/email"
@@ -155,12 +155,17 @@
                         android:id="@+id/edit_Password"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/twenty"
+                        android:layout_marginStart="@dimen/twenty"
+                        android:layout_marginLeft="@dimen/twenty"
+                        android:layout_marginTop="@dimen/twenty"
+                        android:layout_marginEnd="@dimen/twenty"
+                        android:layout_marginRight="@dimen/twenty"
+                        android:layout_marginBottom="@dimen/twenty"
                         android:background="@color/transparent"
-                        android:inputType="textPassword"
                         android:drawableLeft="@drawable/baseline_lock"
                         android:drawableRight="@drawable/baseline_visibility_off"
                         android:drawablePadding="@dimen/fifteen"
+                        android:inputType="textPassword"
                         android:text="123456789"
                         android:textColor="#414142"
                         android:textSize="@dimen/edittextsize">

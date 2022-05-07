@@ -46,7 +46,7 @@ public class UpdateStatus extends Fragment {
     Button btn_CashApply, btn_CashPaidAopply, btn_PinVerifyApply;
     EditText edit_VerifythePin, edit_CompleteAddress;
     RadioButton radio_RecievedCash;
-    TextView text, edit_Money, text_price, priceAmount, ShowPrice, text_name, text_contact;
+    TextView text, edit_Money, booking_price, priceAmount, ShowPrice, text_name, text_contact,text_TechicianName;
     String Pin_verification_status, Book_pay_status, Price, user_Id, orderid, str_technicianName, str_TechnicianMobile, str_TechnicianImage, work_status;
     CircleImageView profile_image;
 
@@ -75,12 +75,13 @@ public class UpdateStatus extends Fragment {
         radio_RecievedCash = view.findViewById(R.id.radio_RecievedCash);
         text = view.findViewById(R.id.text);
         priceAmount = view.findViewById(R.id.priceAmount);
-        edit_Money = view.findViewById(R.id.edit_Money);
-        text_price = view.findViewById(R.id.text_price);
+        edit_Money = view.findViewById(R.id.filal_Money);
+        booking_price = view.findViewById(R.id.booking_price);
         edit_CompleteAddress = view.findViewById(R.id.edit_CompleteAddress);
         text_name = view.findViewById(R.id.text_name);
         text_contact = view.findViewById(R.id.text_contact);
         profile_image = view.findViewById(R.id.profile_image);
+        text_TechicianName = view.findViewById(R.id.text_TechicianName);
 
         rel_Pinverified.setVisibility(View.GONE);
         rel_WorkCompleted.setVisibility(View.GONE);
@@ -117,43 +118,16 @@ public class UpdateStatus extends Fragment {
 
         }
 
-        if (Book_pay_status.equals("online")) {
+        if(work_status.equals("allocated")){
 
-            rel_PaymentTobe.setVisibility(View.VISIBLE);
+            orderstatues(orderid);
 
-            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
+        }else if(work_status.equals("progress")){
 
-            priceAmount.setVisibility(View.GONE);
-            text.setText("Paid");
-            text.setTextColor(Color.WHITE);
-            radio_RecievedCash.setVisibility(View.GONE);
-            btn_CashApply.setVisibility(View.GONE);
+            rel_Pinverified.setVisibility(View.VISIBLE);
+            pinVerifay.setVisibility(View.GONE);
 
-            edit_Money.setText(Price);
-            text_price.setText("0");
-
-            ShowPrice.setText("Work Completed");
-
-            card_Payment.setClickable(false);
-
-        } else {
-
-            edit_Money.setText(Price);
-            text_price.setText(Price);
-
-            finalWorkDetails.setVisibility(View.GONE);
-            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
-
-            priceAmount.setText(Price);
-
-            card_Payment.setClickable(true);
-
-            radio_RecievedCash.setVisibility(View.VISIBLE);
-            btn_CashApply.setVisibility(View.VISIBLE);
-
-        }
-
-        if(work_status.equals("generated")){
+        }else if(work_status.equals("generated")){
 
             finalWorkDetails.setVisibility(View.GONE);
             rel_WorkCompleted.setVisibility(View.VISIBLE);
@@ -171,7 +145,56 @@ public class UpdateStatus extends Fragment {
 
             orderstatues(orderid);
 
+        }else if(work_status.equals("payment_done")){
+
+            rel_WorkCompleted.setVisibility(View.VISIBLE);
+            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
+            rel_PaymentTobe.setVisibility(View.VISIBLE);
+            priceAmount.setVisibility(View.GONE);
+            text.setText("Paid");
+            text.setTextColor(Color.WHITE);
+            radio_RecievedCash.setVisibility(View.GONE);
+            btn_CashApply.setVisibility(View.GONE);
+
+            orderstatues(orderid);
+
+        } else if (Book_pay_status.equals("online")) {
+
+            rel_PaymentTobe.setVisibility(View.VISIBLE);
+
+            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
+
+            priceAmount.setVisibility(View.GONE);
+            text.setText("Paid");
+            text.setTextColor(Color.WHITE);
+            radio_RecievedCash.setVisibility(View.GONE);
+            btn_CashApply.setVisibility(View.GONE);
+
+            edit_Money.setText(Price);
+            booking_price.setText("0");
+
+            ShowPrice.setText("Work Completed");
+
+            card_Payment.setClickable(false);
+
+        } else {
+
+            edit_Money.setText(Price);
+            booking_price.setText(Price);
+
+            finalWorkDetails.setVisibility(View.GONE);
+            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+
+            priceAmount.setText(Price);
+
+            card_Payment.setClickable(true);
+
+            radio_RecievedCash.setVisibility(View.VISIBLE);
+            btn_CashApply.setVisibility(View.VISIBLE);
+
         }
+
+
 
         card_AllocatedTechician.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,8 +272,29 @@ public class UpdateStatus extends Fragment {
                             rel_WorkCompleted.setVisibility(View.GONE);
                         }
                     }
-                }
+                } else {
 
+                    if (rel_WorkCompleted.getVisibility() == View.VISIBLE) {
+
+                        finalWorkDetails.setVisibility(View.GONE);
+
+                    } else {
+
+                        if (rel_Pinverified.getVisibility() == View.VISIBLE) {
+
+                            if (finalWorkDetails.getVisibility() == View.VISIBLE) {
+
+                                finalWorkDetails.setVisibility(View.GONE);
+                                //rel_Pinverified.setVisibility(View.VISIBLE);
+
+                            } else {
+
+                                finalWorkDetails.setVisibility(View.VISIBLE);
+                            }
+                        }
+                    }
+
+                }
             }
         });
 
@@ -271,7 +315,7 @@ public class UpdateStatus extends Fragment {
 
                     if(finalWorkDetails.getVisibility() == View.VISIBLE) {
 
-                        if (text_price.getText().toString().trim().equals("0")) {
+                        if (booking_price.getText().toString().trim().equals("0")) {
 
                             rel_PaymentTobe.setVisibility(View.VISIBLE);
 
@@ -287,7 +331,7 @@ public class UpdateStatus extends Fragment {
                             btn_CashApply.setVisibility(View.GONE);
 
                             edit_Money.setText(Price);
-                            text_price.setText("0");
+                            booking_price.setText("0");
                             ShowPrice.setText("Work Completed");
 
                             card_Payment.setClickable(false);
@@ -306,9 +350,15 @@ public class UpdateStatus extends Fragment {
                             rel_PaymentTobe.setVisibility(View.VISIBLE);
                             priceAmount.setText(Price);
 
+                            String money = edit_Money.getText().toString().trim();
+                            double price = Double.valueOf(money);
+                            double price1 = Double.valueOf(money);
+                            double totalprice = price+price1;
+                            String str_total = String.valueOf(totalprice);
+
                             card_Payment.setClickable(true);
 
-                            ShowPrice.setText("Work Completed & Rs" +" " + Price +" " +"is due");
+                            ShowPrice.setText("Work Completed & Rs" +" " + str_total +" " +"is due");
 
                             orderstatues(orderid);
 
@@ -573,6 +623,11 @@ public class UpdateStatus extends Fragment {
                         str_technicianName = jsonObject_technician.getString("name");
                         str_TechnicianMobile = jsonObject_technician.getString("mobile");
                         str_TechnicianImage = jsonObject_technician.getString("profile_img");
+
+                        if(str_technicianName != null){
+
+                            text_TechicianName.setText(str_technicianName);
+                        }
 
                     }
                 } catch (JSONException e) {

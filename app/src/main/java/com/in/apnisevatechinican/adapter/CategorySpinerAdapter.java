@@ -1,6 +1,7 @@
 package com.in.apnisevatechinican.adapter;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class CategorySpinerAdapter extends ArrayAdapter<CategoryDetails_model> {
     }
 
     private View getCustomView(int position, ViewGroup parent) {
+
         CategoryDetails_model model = getItem(position);
 
         View spinnerRow = LayoutInflater.from(parent.getContext()).inflate(R.layout.spinneritem, parent, false);
@@ -59,4 +61,5 @@ public class CategorySpinerAdapter extends ArrayAdapter<CategoryDetails_model> {
 
         return spinnerRow;
     }
+
 }

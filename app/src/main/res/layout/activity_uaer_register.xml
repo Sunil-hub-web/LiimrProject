@@ -237,7 +237,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/login"
+                    android:id="@+id/text_TermsService"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Terms of Service And Privacy Policy"
@@ -258,7 +258,6 @@
                     android:textStyle="bold"
                     android:textColor="#B203A9F4"
                     android:textSize="@dimen/edittextsize"
-                    android:layout_below="@id/login"
                     android:layout_centerHorizontal="true"
                     />
 
@@ -271,7 +270,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/condition"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/ten">
+                android:layout_marginBottom="@dimen/twenty"
+                android:layout_marginTop="@dimen/thirty">
 
                 <TextView
                     android:id="@+id/login2"

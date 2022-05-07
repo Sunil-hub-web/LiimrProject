@@ -20,13 +20,25 @@
         android:theme="@style/Theme.LiimrProject"
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="stateVisible|adjustResize">
+
+        <activity
+            android:name=".TermsofService"
+            android:theme="@style/Theme.LiimrProject.NoActionBar"></activity>
+
         <activity android:name=".Extra.CheckInternetConnection"></activity>
-        <activity android:name=".ForGotPassword"
+
+        <activity
+            android:name=".ForGotPassword"
             android:theme="@style/Theme.LiimrProject.NoActionBar"></activity>
-        <activity android:name=".ForgotPasswordActivity"
+
+        <activity
+            android:name=".ForgotPasswordActivity"
             android:theme="@style/Theme.LiimrProject.NoActionBar"></activity>
-        <activity android:name=".VerificationCode"
+
+        <activity
+            android:name=".VerificationCode"
             android:theme="@style/Theme.LiimrProject.NoActionBar"></activity>
+
         <activity
             android:name="com.in.apnisevatechinican.Splash_screen"
             android:theme="@style/Theme.LiimrProject.NoActionBar">
@@ -50,6 +62,8 @@
         <activity
             android:name="com.in.apnisevatechinican.MainActivity"
             android:theme="@style/Theme.LiimrProject.NoActionBar" />
+
+
     </application>
 
 </manifest>
