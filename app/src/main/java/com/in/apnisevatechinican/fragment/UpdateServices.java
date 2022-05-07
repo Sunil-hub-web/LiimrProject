@@ -74,9 +74,10 @@ public class UpdateServices extends Fragment {
         str_password = SharedPrefManager.getInstance(getActivity()).getUser().getPassword();
         str_image = SharedPrefManager.getInstance(getActivity()).getUser().getImage();
 
-        text_category.setText(category_Name);
+        text_category.setText(subcategory_Name);
 
         getCategory();
+
 
         WorkingCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -179,7 +180,9 @@ public class UpdateServices extends Fragment {
                         CategorySpinerAdapter Working_Subcategory_adapter = new CategorySpinerAdapter(getActivity(),R.layout.spinneritem,Working_Category);
                         Working_Subcategory_adapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
                         WorkingCategory.setAdapter(Working_Subcategory_adapter);
-                        WorkingCategory.setSelection(-1,true);
+                        int index=selectSpinnerValue(Working_Category,category_Name);
+                        WorkingCategory.setSelection(index,true);
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -246,7 +249,9 @@ public class UpdateServices extends Fragment {
                         CategorySpinerAdapter WorkingCategory_adapter = new CategorySpinerAdapter(getActivity(),R.layout.spinneritem,Working_Subcategory);
                         WorkingCategory_adapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
                         WorkingSubcategory.setAdapter(WorkingCategory_adapter);
-                        WorkingSubcategory.setSelection(-1,true);
+                        int index = selectSpinnerValue(Working_Subcategory,subcategory_Name);
+                        WorkingSubcategory.setSelection(index,true);
+
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -341,5 +346,28 @@ public class UpdateServices extends Fragment {
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000,1,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
+    }
+
+   /* private void selectSpinnerValue(Spinner spinner, String myString)
+    {
+        int index = 0;
+        for(int i = 0; i < spinner.getCount(); i++){
+            if(spinner.getItemAtPosition(i).toString().equals(myString)){
+                spinner.setSelection(i);
+                break;
+            }
+        }
+    }*/
+
+    private int selectSpinnerValue( ArrayList<CategoryDetails_model> ListSpinner,String myString)
+    {
+        int index = 0;
+        for(int i = 0; i < ListSpinner.size(); i++){
+            if(ListSpinner.get(i).getName().equals(myString)){
+                index=i;
+                break;
+            }
+        }
+        return index;
     }
 }

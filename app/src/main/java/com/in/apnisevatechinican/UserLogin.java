@@ -64,33 +64,40 @@ public class UserLogin extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                final int Right = 2;
-                if(event.getAction() == MotionEvent.ACTION_UP){
+                if(edit_Password.getText().toString().trim().equals("")){
 
-                    if(event.getRawX() >= edit_Password.getRight() - edit_Password.getCompoundDrawables()[Right].getBounds().width()){
+                    edit_Password.setError("Fill the details");
 
-                        int selection = edit_Password.getSelectionEnd();
-                        if(passwordVisiable){
+                }else{
 
-                            //set Drawable Image here
-                            edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.baseline_visibility_off,0);
-                            // for show Password
-                            edit_Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                            passwordVisiable = false;
-                            edit_Password.setCompoundDrawablePadding(15);
+                    final int Right = 2;
+                    if(event.getAction() == MotionEvent.ACTION_UP){
 
-                        }else{
+                        if(event.getRawX() >= edit_Password.getRight() - edit_Password.getCompoundDrawables()[Right].getBounds().width()){
 
-                            //set Drawable Image here
-                            edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.baseline_visibility,0);
-                            // for show Password
-                            edit_Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                            passwordVisiable = true;
-                            edit_Password.setCompoundDrawablePadding(15);
+                            int selection = edit_Password.getSelectionEnd();
+                            if(passwordVisiable){
+
+                                //set Drawable Image here
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.baseline_visibility_off,0);
+                                // for show Password
+                                edit_Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                passwordVisiable = false;
+                                edit_Password.setCompoundDrawablePadding(15);
+
+                            }else{
+
+                                //set Drawable Image here
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.baseline_visibility,0);
+                                // for show Password
+                                edit_Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                passwordVisiable = true;
+                                edit_Password.setCompoundDrawablePadding(15);
+                            }
+
+                            edit_Password.setSelection(selection);
+                            return true;
                         }
-
-                        edit_Password.setSelection(selection);
-                        return true;
                     }
                 }
                 return false;
@@ -204,9 +211,11 @@ public class UserLogin extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+                Log.d("sunilerror",error.toString());
+
                 progressDialog.dismiss();
                 error.printStackTrace();
-                Toast.makeText(UserLogin.this, "Not Update", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserLogin.this, ""+error, Toast.LENGTH_SHORT).show();
 
             }
         }){

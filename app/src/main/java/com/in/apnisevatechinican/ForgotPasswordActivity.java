@@ -106,31 +106,38 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                final int Right = 2;
-                if (event.getAction() == MotionEvent.ACTION_UP) {
+                if(edit_Password.getText().toString().trim().equals("")){
 
-                    if (event.getRawX() >= edit_Password.getRight() - edit_Password.getCompoundDrawables()[Right].getBounds().width()) {
+                    edit_Password.setError("Fill The Fields");
 
-                        int selection = edit_Password.getSelectionEnd();
-                        if (passwordVisiable) {
+                }else{
 
-                            //set Drawable Image here
-                            edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
-                            // for show Password
-                            edit_Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                            passwordVisiable = false;
+                    final int Right = 2;
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
 
-                        } else {
+                        if (event.getRawX() >= edit_Password.getRight() - edit_Password.getCompoundDrawables()[Right].getBounds().width()) {
 
-                            //set Drawable Image here
-                            edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
-                            // for show Password
-                            edit_Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                            passwordVisiable = true;
+                            int selection = edit_Password.getSelectionEnd();
+                            if (passwordVisiable) {
+
+                                //set Drawable Image here
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                // for show Password
+                                edit_Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                passwordVisiable = false;
+
+                            } else {
+
+                                //set Drawable Image here
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                // for show Password
+                                edit_Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                passwordVisiable = true;
+                            }
+
+                            edit_Password.setSelection(selection);
+                            return true;
                         }
-
-                        edit_Password.setSelection(selection);
-                        return true;
                     }
                 }
                 return false;
@@ -178,31 +185,39 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                final int Right = 2;
-                if (event.getAction() == MotionEvent.ACTION_UP) {
 
-                    if (event.getRawX() >= edit_ConfirmPassword.getRight() - edit_ConfirmPassword.getCompoundDrawables()[Right].getBounds().width()) {
+                if(edit_ConfirmPassword.getText().toString().trim().equals("")){
 
-                        int selection = edit_Password.getSelectionEnd();
-                        if (passwordVisiable) {
+                    edit_ConfirmPassword.setError("Fill The Fields");
 
-                            //set Drawable Image here
-                            edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
-                            // for show Password
-                            edit_ConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                            passwordVisiable = false;
+                }else{
 
-                        } else {
+                    final int Right = 2;
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
 
-                            //set Drawable Image here
-                            edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
-                            // for show Password
-                            edit_ConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                            passwordVisiable = true;
+                        if (event.getRawX() >= edit_ConfirmPassword.getRight() - edit_ConfirmPassword.getCompoundDrawables()[Right].getBounds().width()) {
+
+                            int selection = edit_Password.getSelectionEnd();
+                            if (passwordVisiable) {
+
+                                //set Drawable Image here
+                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                // for show Password
+                                edit_ConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                passwordVisiable = false;
+
+                            } else {
+
+                                //set Drawable Image here
+                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                // for show Password
+                                edit_ConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                passwordVisiable = true;
+                            }
+
+                            edit_ConfirmPassword.setSelection(selection);
+                            return true;
                         }
-
-                        edit_ConfirmPassword.setSelection(selection);
-                        return true;
                     }
                 }
                 return false;

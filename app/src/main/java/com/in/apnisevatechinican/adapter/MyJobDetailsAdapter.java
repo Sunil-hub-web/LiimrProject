@@ -47,12 +47,8 @@ public class MyJobDetailsAdapter extends RecyclerView.Adapter<MyJobDetailsAdapte
         holder.booking_Id.setText(myjob_details.getBookingId());
         holder.category_Name.setText(myjob_details.getCategory_Name());
         holder.customer_Name.setText(myjob_details.getCoustomer_Name());
+        holder.status.setText(myjob_details.getStatus());
 
-        if(myjob_details.getBook_pay_status().equals("online")){
-            holder.status.setText("Paid");
-        }else if(myjob_details.getBook_pay_status().equals("cash")){
-            holder.status.setText("Awaiting Payment");
-        }
 
         holder.image_click.setOnClickListener(new View.OnClickListener() {
             @Override

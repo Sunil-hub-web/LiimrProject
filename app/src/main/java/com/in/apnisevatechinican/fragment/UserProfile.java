@@ -47,6 +47,8 @@ import com.in.apnisevatechinican.Extra.AppUrl;
 import com.in.apnisevatechinican.Extra.VolleyMultipartRequest;
 import com.in.apnisevatechinican.R;
 import com.in.apnisevatechinican.SharedPrefManager;
+import com.in.apnisevatechinican.UserLogin;
+import com.in.apnisevatechinican.modelclass.Login_ModelClass;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -63,7 +65,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfile extends Fragment {
 
-    TextView text_edit,userId;
+    TextView text_edit;
     EditText edit_name,edit_Email,edit_MobileNo,edit_Password;
     Button btn_AvaiLabiLity,image_change,btn_Updateaddress,btn_UpdateServices;
     boolean passwordVisiable;
@@ -71,7 +73,7 @@ public class UserProfile extends Fragment {
     Uri imageUri, selectedImageUri;
     private Bitmap bitmap;
     File f;
-    String ImageDecode,userid,profileimage,str_name,str_Email,str_MobileNo,str_Password;
+    String ImageDecode,userid,profileimage,str_name,str_Email,str_MobileNo,str_Password,str_category,str_Subcategory;
     CircleImageView profile_image;
     private static final int REQUEST_PERMISSIONS = 100;
     AwesomeValidation awesomeValidation;
@@ -93,12 +95,14 @@ public class UserProfile extends Fragment {
         profile_image = view.findViewById(R.id.profile_image);
         image_change = view.findViewById(R.id.image_change);
         btn_Updateaddress = view.findViewById(R.id.btn_Updateaddress);
-        userId = view.findViewById(R.id.userId);
+        //userId = view.findViewById(R.id.userId);
         btn_UpdateServices = view.findViewById(R.id.btn_UpdateServices);
 
         userid = SharedPrefManager.getInstance(getActivity()).getUser().getUserid();
         profileimage = SharedPrefManager.getInstance(getActivity()).getUser().getImage();
         str_Password = SharedPrefManager.getInstance(getActivity()).getUser().getPassword();
+        str_category = SharedPrefManager.getInstance(getActivity()).getUser().getCategory();
+        str_Subcategory = SharedPrefManager.getInstance(getActivity()).getUser().getSubcategory();
 
         Log.d("profileimagesunil",profileimage);
 
@@ -114,6 +118,9 @@ public class UserProfile extends Fragment {
                 edit_name.setEnabled(true);
                 edit_Email.setEnabled(true);
                 edit_MobileNo.setEnabled(true);
+
+                edit_name.setFocusable(true);
+                edit_name.requestFocus();
 
                 text_edit.setTextColor(ContextCompat.getColor(getContext(),R.color.back1));
 
@@ -292,7 +299,7 @@ public class UserProfile extends Fragment {
                         edit_MobileNo.setText(mobile);
                         edit_Email.setText(email);
                         edit_Password.setText(str_Password);
-                        userId.setText(id);
+                        //userId.setText(id);
 
                         Picasso.with(getContext()).load(image).placeholder(R.drawable.profileimage).into(profile_image);
 
@@ -363,18 +370,25 @@ public class UserProfile extends Fragment {
                         String email_verified_at = jsonObject_data.getString("email_verified_at");
                         String profile_img = jsonObject_data.getString("profile_img");
                         String city = jsonObject_data.getString("city");
+                        String pass = edit_Password.getText().toString().trim();
 
                         edit_name.setText(name);
                         edit_MobileNo.setText(mobile);
                         edit_Email.setText(email);
                         edit_Password.setText(str_Password);
-                        userId.setText(id);
+                        //userId.setText(id);
 
                         text_edit.setTextColor(ContextCompat.getColor(getContext(), R.color.textcol));
 
                         edit_name.setEnabled(false);
                         edit_Email.setEnabled(false);
                         edit_MobileNo.setEnabled(false);
+
+                        Login_ModelClass login_modelClass = new Login_ModelClass(
+                                id,mobile,email,name,pass,profile_img,str_category,str_Subcategory
+                        );
+
+                        SharedPrefManager.getInstance(getContext()).userLogin(login_modelClass);
 
                     }
                 } catch (JSONException e) {
@@ -482,7 +496,7 @@ public class UserProfile extends Fragment {
     public void uploadProfileimage(String userid, Bitmap bitmap){
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Profile Pic Upload Please wait...");
+        progressDialog.setMessage("Image is being uploaded Please wait...");
         progressDialog.show();
 
 

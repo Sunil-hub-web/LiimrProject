@@ -53,7 +53,10 @@ public class JobDetails extends Fragment {
         customer_Name.setText(name);
         text_category.setText(category);
 
-        if(Book_pay_status.equals("online")){
+        if(work_status.equals("payment_done")){
+            status_name.setText("payment_done");
+        }
+        else if(Book_pay_status.equals("online")){
             status_name.setText("Paid");
         }else if(Book_pay_status.equals("cash")){
             status_name.setText("Awaiting Payment");

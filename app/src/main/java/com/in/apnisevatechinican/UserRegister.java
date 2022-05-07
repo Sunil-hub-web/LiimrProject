@@ -47,7 +47,7 @@ import java.util.Map;
 public class UserRegister extends AppCompatActivity {
 
     Button btn_signup;
-    TextView text_SignIn;
+    TextView text_SignIn,text_TermsService;
     boolean passwordVisiable;
     AwesomeValidation awesomeValidation;
     Spinner WorkingCategory,WorkingSubcategory,Workingcity;
@@ -57,8 +57,6 @@ public class UserRegister extends AppCompatActivity {
     String city_Id,city_Name,category_Id,category_Name,subcategory_Id,subcategory_Name,str_fullname,
             str_MobileNumber,str_Email,str_Password,str_ConfirmPassword;
     EditText edit_fullname,edit_MobileNumber,edit_Email,edit_Password,edit_ConfirmPassword;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +73,7 @@ public class UserRegister extends AppCompatActivity {
         edit_MobileNumber = findViewById(R.id.edit_MobileNumber);
         edit_Email = findViewById(R.id.edit_Email);
         edit_ConfirmPassword = findViewById(R.id.edit_ConfirmPassword);
+        text_TermsService = findViewById(R.id.text_TermsService);
 
         getSupportActionBar().hide();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -166,31 +165,38 @@ public class UserRegister extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                final int Right = 2;
-                if (event.getAction() == MotionEvent.ACTION_UP) {
+                if(edit_Password.getText().toString().trim().equals("")){
 
-                    if (event.getRawX() >= edit_Password.getRight() - edit_Password.getCompoundDrawables()[Right].getBounds().width()) {
+                    edit_Password.setError("Fill Details");
 
-                        int selection = edit_Password.getSelectionEnd();
-                        if (passwordVisiable) {
+                }else{
 
-                            //set Drawable Image here
-                            edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
-                            // for show Password
-                            edit_Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                            passwordVisiable = false;
+                    final int Right = 2;
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
 
-                        } else {
+                        if (event.getRawX() >= edit_Password.getRight() - edit_Password.getCompoundDrawables()[Right].getBounds().width()) {
 
-                            //set Drawable Image here
-                            edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
-                            // for show Password
-                            edit_Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                            passwordVisiable = true;
+                            int selection = edit_Password.getSelectionEnd();
+                            if (passwordVisiable) {
+
+                                //set Drawable Image here
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                // for show Password
+                                edit_Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                passwordVisiable = false;
+
+                            } else {
+
+                                //set Drawable Image here
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                // for show Password
+                                edit_Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                passwordVisiable = true;
+                            }
+
+                            edit_Password.setSelection(selection);
+                            return true;
                         }
-
-                        edit_Password.setSelection(selection);
-                        return true;
                     }
                 }
                 return false;
@@ -203,33 +209,41 @@ public class UserRegister extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                final int Right = 2;
-                if (event.getAction() == MotionEvent.ACTION_UP) {
+                if(edit_ConfirmPassword.getText().toString().trim().equals("edit_ConfirmPassword")){
 
-                    if (event.getRawX() >= edit_ConfirmPassword.getRight() - edit_ConfirmPassword.getCompoundDrawables()[Right].getBounds().width()) {
+                    edit_ConfirmPassword.setError("Fill Details");
 
-                        int selection = edit_Password.getSelectionEnd();
-                        if (passwordVisiable) {
+                }else{
 
-                            //set Drawable Image here
-                            edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
-                            // for show Password
-                            edit_ConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                            passwordVisiable = false;
+                    final int Right = 2;
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
 
-                        } else {
+                        if (event.getRawX() >= edit_ConfirmPassword.getRight() - edit_ConfirmPassword.getCompoundDrawables()[Right].getBounds().width()) {
 
-                            //set Drawable Image here
-                            edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
-                            // for show Password
-                            edit_ConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                            passwordVisiable = true;
+                            int selection = edit_Password.getSelectionEnd();
+                            if (passwordVisiable) {
+
+                                //set Drawable Image here
+                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                // for show Password
+                                edit_ConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                                passwordVisiable = false;
+
+                            } else {
+
+                                //set Drawable Image here
+                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                // for show Password
+                                edit_ConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                                passwordVisiable = true;
+                            }
+
+                            edit_ConfirmPassword.setSelection(selection);
+                            return true;
                         }
-
-                        edit_ConfirmPassword.setSelection(selection);
-                        return true;
                     }
                 }
+
                 return false;
             }
         });
@@ -273,6 +287,16 @@ public class UserRegister extends AppCompatActivity {
 
                 Intent intent = new Intent(UserRegister.this,UserLogin.class);
                 startActivity(intent);
+            }
+        });
+
+        text_TermsService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(UserRegister.this,TermsofService.class);
+                startActivity(intent);
+
             }
         });
     }
@@ -510,6 +534,9 @@ public class UserRegister extends AppCompatActivity {
                     if(status.equals("OK")){
 
                         Toast.makeText(UserRegister.this, "User Register Successfully", Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(UserRegister.this,UserLogin.class);
+                        startActivity(intent);
 
                     }else if(status.equalsIgnoreCase("NOK")){
 
