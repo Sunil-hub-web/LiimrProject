@@ -2,6 +2,7 @@ package com.in.apnisevatechinican.fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,14 @@ import com.in.apnisevatechinican.MainActivity;
 import com.in.apnisevatechinican.SharedPrefManager;
 import com.in.apnisevatechinican.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class JobDetails extends Fragment {
 
-    TextView update_Status,CompleteAddress,customer_Name,status_name,text_category;
-    String Pin_verification_status,Book_pay_status,address1,address,name,id,Price,category,work_status;
+    TextView update_Status,CompleteAddress,customer_Name,status_name,text_category,booking_date,booking_time;
+    String Pin_verification_status,Book_pay_status,address1,address,name,id,Price,category,work_status,Created_at;
 
     @Nullable
     @Override
@@ -34,6 +39,8 @@ public class JobDetails extends Fragment {
         customer_Name = view.findViewById(R.id.customer_Name);
         status_name = view.findViewById(R.id.status_name);
         text_category = view.findViewById(R.id.text_category);
+        booking_date = view.findViewById(R.id.booking_date);
+        booking_time = view.findViewById(R.id.booking_time);
 
         category = SharedPrefManager.getInstance(getActivity()).getUser().getCategory();
 
@@ -46,20 +53,37 @@ public class JobDetails extends Fragment {
         Pin_verification_status = sp_jobs.getString("Pin_verification_status",null);
         Price = sp_jobs.getString("Price",null);
         work_status = sp_jobs.getString("work_status",null);
+        Created_at = sp_jobs.getString("Created_at",null);
 
         MainActivity.bookingId.setText(id);
 
         CompleteAddress.setText(address+"\n"+address1);
         customer_Name.setText(name);
         text_category.setText(category);
+        status_name.setText(work_status);
 
-        if(work_status.equals("payment_done")){
-            status_name.setText("payment_done");
+
+        try {
+            SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            java.util.Date date = form.parse(Created_at);
+            //SimpleDateFormat postFormater = new SimpleDateFormat("MMMMM, dd, yyyy");
+            SimpleDateFormat postFormater = new SimpleDateFormat("yyyy-MM-dd");
+            String newDateStr = postFormater.format(date);
+
+            SimpleDateFormat postFormater1 = new SimpleDateFormat("hh:mm");
+            String newTimeStr = postFormater1.format(date);
+
+            booking_date.setText(newDateStr);
+            booking_time.setText(newTimeStr);
+
+            Log.d("changedatime",newDateStr);
+
+
         }
-        else if(Book_pay_status.equals("online")){
-            status_name.setText("Paid");
-        }else if(Book_pay_status.equals("cash")){
-            status_name.setText("Awaiting Payment");
+        catch (ParseException e) {
+
+            e.printStackTrace();
+            Log.d("changedat",e.toString());
         }
 
         update_Status.setOnClickListener(new View.OnClickListener() {

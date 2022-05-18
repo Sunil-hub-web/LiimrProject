@@ -47,7 +47,7 @@ public class MyJobDetailsAdapter extends RecyclerView.Adapter<MyJobDetailsAdapte
         holder.booking_Id.setText(myjob_details.getBookingId());
         holder.category_Name.setText(myjob_details.getCategory_Name());
         holder.customer_Name.setText(myjob_details.getCoustomer_Name());
-        holder.status.setText(myjob_details.getStatus());
+        holder.status.setText(myjob_details.getWork_status());
 
 
         holder.image_click.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +71,7 @@ public class MyJobDetailsAdapter extends RecyclerView.Adapter<MyJobDetailsAdapte
                 editor.putString("Pin_verification_status",myjob_details.getPin_verification_status());
                 editor.putString("Price",myjob_details.getPrice());
                 editor.putString("work_status",myjob_details.getWork_status());
+                editor.putString("Created_at",myjob_details.getCreated_at());
                 editor.commit();
 
             }

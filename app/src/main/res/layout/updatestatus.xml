@@ -186,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 app:cardElevation="@dimen/one"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -242,7 +242,7 @@
                                 android:layout_height="@dimen/eighty"
                                 android:layout_centerVertical="true"
                                 android:layout_marginLeft="@dimen/ten"
-                                android:src="@drawable/profileimage"
+                                android:src="@drawable/no_avatar"
                                 app:civ_border_color="#FF000000"
                                 app:civ_border_width="2dp" />
 

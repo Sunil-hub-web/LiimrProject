@@ -285,10 +285,10 @@
                         </TextView>
 
                         <TextView
+                            android:id="@+id/booking_date"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:text="20/10/2021"
                             android:textColor="@color/black"
                             android:textSize="@dimen/textsize">
 
@@ -318,10 +318,10 @@
                         </TextView>
 
                         <TextView
+                            android:id="@+id/booking_time"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:text="12:30"
                             android:textColor="@color/black"
                             android:textSize="@dimen/textsize">
 

@@ -36,7 +36,7 @@
                 android:id="@+id/profile_image"
                 android:layout_width="@dimen/hundred"
                 android:layout_height="@dimen/hundred"
-                android:src="@drawable/profileimage"
+                android:src="@drawable/no_avatar"
                 app:civ_border_color="#FF000000"
                 app:civ_border_width="2dp"
                 android:layout_gravity="center_horizontal"
@@ -209,7 +209,7 @@
                 android:layout_marginRight="@dimen/thirty"
                 android:layout_marginTop="@dimen/twenty"
                 android:background="@drawable/livechart_bg"
-                android:text="Update Address"
+                android:text="Update Profile"
                 android:textColor="@color/white"
                 android:textSize="@dimen/edittextsize"></Button>
 

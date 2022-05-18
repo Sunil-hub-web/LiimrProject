@@ -49,7 +49,7 @@ public class UpdateServices extends Fragment {
     TextView text_category;
 
     String category_Id,category_Name,subcategory_Id,subcategory_Name,userid,str_mobileNo,str_emailId,
-            str_userName,str_password,str_image;
+            str_userName,str_password,str_image,str_City,str_CityId;
 
 
     @Nullable
@@ -73,6 +73,8 @@ public class UpdateServices extends Fragment {
         str_userName = SharedPrefManager.getInstance(getActivity()).getUser().getUserName();
         str_password = SharedPrefManager.getInstance(getActivity()).getUser().getPassword();
         str_image = SharedPrefManager.getInstance(getActivity()).getUser().getImage();
+        str_City = SharedPrefManager.getInstance(getActivity()).getUser().getCity();
+        str_CityId = SharedPrefManager.getInstance(getActivity()).getUser().getCity_id();
 
         text_category.setText(subcategory_Name);
 
@@ -305,7 +307,7 @@ public class UpdateServices extends Fragment {
                         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
 
                         Login_ModelClass login_modelClass = new Login_ModelClass(
-                                userid,str_mobileNo,str_emailId,str_userName,str_password,str_image,category_Name,subcategory_Name
+                                userid,str_mobileNo,str_emailId,str_userName,str_password,str_image,category_Name,subcategory_Name,str_City,str_CityId
                         );
 
                         SharedPrefManager.getInstance(getActivity()).userLogin(login_modelClass);

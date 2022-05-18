@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nav_logout = header.findViewById(R.id.nav_logout);
         //nav_Aboutas = header.findViewById(R.id.nav_Aboutas);
 
+
+
         text_name.setText("Home Page");
         mydrawer.closeDrawer(GravityCompat.START);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -58,6 +61,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ft.commit();
         text_name.setVisibility(View.VISIBLE);
         linearLayout.setVisibility(View.GONE);
+
+        String mobile = SharedPrefManager.getInstance(MainActivity.this).getUser().getMobileNo();
+        String password = SharedPrefManager.getInstance(MainActivity.this).getUser().getPassword();
+
+        Log.d("userdetails",mobile +"  "+password);
 
         nav_Message.setOnClickListener(new View.OnClickListener() {
             @Override

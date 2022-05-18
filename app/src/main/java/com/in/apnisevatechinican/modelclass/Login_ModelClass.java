@@ -2,10 +2,10 @@ package com.in.apnisevatechinican.modelclass;
 
 public class Login_ModelClass {
 
-    String userid,mobileNo,emailId,userName,password,image,category,subcategory;
+    String userid,mobileNo,emailId,userName,password,image,category,subcategory,city,city_id;
 
     public Login_ModelClass(String userid, String mobileNo, String emailId, String userName,
-                            String password,String image,String category,String subcategory) {
+                            String password,String image,String category,String subcategory,String city,String city_id) {
         this.userid = userid;
         this.mobileNo = mobileNo;
         this.emailId = emailId;
@@ -14,6 +14,8 @@ public class Login_ModelClass {
         this.image = image;
         this.category = category;
         this.subcategory = subcategory;
+        this.city = city;
+        this.city_id = city_id;
     }
 
     public String getUserid() {
@@ -78,5 +80,21 @@ public class Login_ModelClass {
 
     public void setSubcategory(String subcategory) {
         this.subcategory = subcategory;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCity_id() {
+        return city_id;
+    }
+
+    public void setCity_id(String city_id) {
+        this.city_id = city_id;
     }
 }
