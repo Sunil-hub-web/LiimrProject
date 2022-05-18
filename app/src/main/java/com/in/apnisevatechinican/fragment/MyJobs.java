@@ -123,11 +123,12 @@ public class MyJobs extends Fragment {
                                 String book_pay_status = jsonObject_jobs.getString("book_pay_status");
                                 String online_book_pay_id = jsonObject_jobs.getString("online_book_pay_id");
                                 String pay_type = jsonObject_jobs.getString("pay_type");
+                                String created_at = jsonObject_jobs.getString("created_at");
 
                                 MyJobDetails_ModelClass myJobDetails_modelClass = new MyJobDetails_ModelClass(
                                         id, id, category, name, book_pay_status, price, mobile, address, address1, subtotal, igst, cgst,
                                         create_user_id, verification_pin, pin_verification_status, work_status, work_details,
-                                        extra_amt, payment_status, book_pay_status, online_book_pay_id, pay_type
+                                        extra_amt, payment_status, book_pay_status, online_book_pay_id, pay_type,created_at
                                 );
 
                                 myJobDetails.add(myJobDetails_modelClass);
@@ -135,7 +136,6 @@ public class MyJobs extends Fragment {
 
                             cartempty.setVisibility(View.INVISIBLE);
                             recyclerJobDetails.setVisibility(View.VISIBLE);
-
                             linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
                             linearLayoutManager.setReverseLayout(true);
                             linearLayoutManager.setStackFromEnd(true);

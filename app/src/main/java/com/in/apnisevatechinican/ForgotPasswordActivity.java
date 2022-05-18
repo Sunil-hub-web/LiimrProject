@@ -197,7 +197,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
                         if (event.getRawX() >= edit_ConfirmPassword.getRight() - edit_ConfirmPassword.getCompoundDrawables()[Right].getBounds().width()) {
 
-                            int selection = edit_Password.getSelectionEnd();
+                            int selection = edit_ConfirmPassword.getSelectionEnd();
                             if (passwordVisiable) {
 
                                 //set Drawable Image here

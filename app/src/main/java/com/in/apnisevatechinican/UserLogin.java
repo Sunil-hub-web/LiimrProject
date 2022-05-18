@@ -183,9 +183,11 @@ public class UserLogin extends AppCompatActivity {
                         String image = jsonObject.getString("image");
                         String category = jsonObject.getString("category");
                         String subcategory = jsonObject.getString("subcategory");
+                        String city = jsonObject.getString("city");
+                        String city_id = jsonObject.getString("city_id");
 
                         Login_ModelClass login_modelClass = new Login_ModelClass(
-                                id,mobile,email,name,password,image,category,subcategory
+                                id,mobile,email,name,password,image,category,subcategory,city,city_id
                                 );
 
                         SharedPrefManager.getInstance(UserLogin.this).userLogin(login_modelClass);

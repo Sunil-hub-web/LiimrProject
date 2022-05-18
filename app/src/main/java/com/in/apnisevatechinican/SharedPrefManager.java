@@ -17,6 +17,8 @@ public class SharedPrefManager {
     private static final String KEY_IMAGE = "keyimage";
     private static final String KEY_subcategory = "subcategory";
     private static final String KEY_category = "category";
+    private static final String KEY_City = "city";
+    private static final String KEY_City_ID = "cityid";
     private static SharedPrefManager mInstance;
     private static Context mCtx;
 
@@ -47,6 +49,8 @@ public class SharedPrefManager {
         editor.putString(KEY_IMAGE,                login_modelClass.getImage ());
         editor.putString(KEY_category,                login_modelClass.getCategory ());
         editor.putString(KEY_subcategory,                login_modelClass.getSubcategory ());
+        editor.putString(KEY_City,                login_modelClass.getCity ());
+        editor.putString(KEY_City_ID,                login_modelClass.getCity_id ());
 
 
         editor.apply();
@@ -71,7 +75,9 @@ public class SharedPrefManager {
                 sharedPrefManager.getString(KEY_password, null),
                 sharedPrefManager.getString(KEY_IMAGE, null),
                 sharedPrefManager.getString(KEY_category, null),
-                sharedPrefManager.getString(KEY_subcategory, null)
+                sharedPrefManager.getString(KEY_subcategory, null),
+                sharedPrefManager.getString(KEY_City, null),
+                sharedPrefManager.getString(KEY_City_ID, null)
 
         );
 

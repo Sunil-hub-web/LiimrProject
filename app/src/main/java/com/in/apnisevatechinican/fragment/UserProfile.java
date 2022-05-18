@@ -48,9 +48,13 @@ import com.in.apnisevatechinican.Extra.VolleyMultipartRequest;
 import com.in.apnisevatechinican.R;
 import com.in.apnisevatechinican.SharedPrefManager;
 import com.in.apnisevatechinican.UserLogin;
+import com.in.apnisevatechinican.UserRegister;
+import com.in.apnisevatechinican.adapter.CategorySpinerAdapter;
+import com.in.apnisevatechinican.modelclass.CategoryDetails_model;
 import com.in.apnisevatechinican.modelclass.Login_ModelClass;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -73,7 +77,7 @@ public class UserProfile extends Fragment {
     Uri imageUri, selectedImageUri;
     private Bitmap bitmap;
     File f;
-    String ImageDecode,userid,profileimage,str_name,str_Email,str_MobileNo,str_Password,str_category,str_Subcategory;
+    String ImageDecode,userid,profileimage,str_name,str_Email,str_MobileNo,str_Password,str_category,str_Subcategory,str_City,str_CityId;
     CircleImageView profile_image;
     private static final int REQUEST_PERMISSIONS = 100;
     AwesomeValidation awesomeValidation;
@@ -103,12 +107,14 @@ public class UserProfile extends Fragment {
         str_Password = SharedPrefManager.getInstance(getActivity()).getUser().getPassword();
         str_category = SharedPrefManager.getInstance(getActivity()).getUser().getCategory();
         str_Subcategory = SharedPrefManager.getInstance(getActivity()).getUser().getSubcategory();
+        str_City = SharedPrefManager.getInstance(getActivity()).getUser().getCity();
+        str_CityId = SharedPrefManager.getInstance(getActivity()).getUser().getCity_id();
 
         Log.d("profileimagesunil",profileimage);
 
         getUserProfile(userid);
 
-        Picasso.with(getContext()).load(profileimage).placeholder(R.drawable.profileimage).into(profile_image);
+        Picasso.with(getContext()).load(profileimage).placeholder(R.drawable.no_avatar).into(profile_image);
 
 
         text_edit.setOnClickListener(new View.OnClickListener() {
@@ -166,11 +172,12 @@ public class UserProfile extends Fragment {
                     str_MobileNo = edit_MobileNo.getText().toString().trim();
                     //str_Password = edit_Password.getText().toString().trim();
 
-                    updateprofile(userid,str_name,str_Email,str_MobileNo,"city");
+                    updateprofile(userid,str_name,str_Email,str_MobileNo,str_CityId);
                 }
 
             }
         });
+
       /*
         btn_AvaiLabiLity.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -301,7 +308,7 @@ public class UserProfile extends Fragment {
                         edit_Password.setText(str_Password);
                         //userId.setText(id);
 
-                        Picasso.with(getContext()).load(image).placeholder(R.drawable.profileimage).into(profile_image);
+                        Picasso.with(getContext()).load(image).placeholder(R.drawable.no_avatar).into(profile_image);
 
                         edit_name.setEnabled(false);
                         edit_Email.setEnabled(false);
@@ -340,7 +347,7 @@ public class UserProfile extends Fragment {
     public void updateprofile(String id,String name,String email,String mobileNo,String city){
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Update User Please wait...");
+        progressDialog.setMessage("Update Profile Please wait...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, AppUrl.updateprofile, new Response.Listener<String>() {
@@ -385,7 +392,7 @@ public class UserProfile extends Fragment {
                         edit_MobileNo.setEnabled(false);
 
                         Login_ModelClass login_modelClass = new Login_ModelClass(
-                                id,mobile,email,name,pass,profile_img,str_category,str_Subcategory
+                                id,mobile,email,name,pass,profile_img,str_category,str_Subcategory,str_City,str_CityId
                         );
 
                         SharedPrefManager.getInstance(getContext()).userLogin(login_modelClass);
@@ -403,7 +410,7 @@ public class UserProfile extends Fragment {
 
                 progressDialog.dismiss();
                 error.printStackTrace();
-                Toast.makeText(getActivity(), "Not Update", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "API not response, Facing Technical issues, Try again!", Toast.LENGTH_SHORT).show();
             }
         }){
 
@@ -570,6 +577,71 @@ public class UserProfile extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.getCache().clear();
         requestQueue.add(volleyMultipartRequest);
+
+    }
+
+    public void getCity(){
+
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("City Please wait...");
+        progressDialog.show();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, AppUrl.getmastercity, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+
+                    String status = jsonObject.getString("status");
+
+                    if(status.equals("OK")){
+
+                        String city = jsonObject.getString("city");
+                        JSONArray jsonArray_city = new JSONArray(city);
+
+                        for(int i=0; i<jsonArray_city.length(); i++){
+
+                            JSONObject jsonObject_City = jsonArray_city.getJSONObject(i);
+
+                            String id = jsonObject_City.getString("id");
+                            String city_name = jsonObject_City.getString("city_name");
+
+                            CategoryDetails_model categoryDetails_model = new CategoryDetails_model(
+
+                                    city_name,id
+                            );
+
+                            //Working_city.add(categoryDetails_model);
+
+                        }
+
+                        //CategorySpinerAdapter Working_city_adapter = new CategorySpinerAdapter(getActivity(),R.layout.spinneritem,Working_city);
+                        //Working_city_adapter.setDropDownViewResource(R.layout.spinnerdropdownitem);
+                        //Workingcity.setAdapter(Working_city_adapter);
+                        //Workingcity.setSelection(-1,true);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                progressDialog.dismiss();
+                error.printStackTrace();
+                Toast.makeText(getActivity(), "error"+error, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(3000,1,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
 
     }
 

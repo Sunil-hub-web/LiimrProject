@@ -4,14 +4,14 @@ public class MyJobDetails_ModelClass {
 
     String id,bookingId,category_Name,coustomer_Name,status,price,mobile,address,address1,
             subtotal,igst,cgst,create_user_id,verification_pin,pin_verification_status,work_status,work_details,
-            extra_amt,payment_status,book_pay_status,online_book_pay_id,pay_type;
+            extra_amt,payment_status,book_pay_status,online_book_pay_id,pay_type,created_at;
 
     public MyJobDetails_ModelClass(String id, String bookingId, String category_Name, String coustomer_Name,
                                    String status, String price, String mobile, String address, String address1,
                                    String subtotal, String igst, String cgst, String create_user_id,
                                    String verification_pin, String pin_verification_status, String work_status,
                                    String work_details, String extra_amt, String payment_status,
-                                   String book_pay_status, String online_book_pay_id, String pay_type) {
+                                   String book_pay_status, String online_book_pay_id, String pay_type,String created_at) {
         this.id = id;
         this.bookingId = bookingId;
         this.category_Name = category_Name;
@@ -34,6 +34,7 @@ public class MyJobDetails_ModelClass {
         this.book_pay_status = book_pay_status;
         this.online_book_pay_id = online_book_pay_id;
         this.pay_type = pay_type;
+        this.created_at = created_at;
     }
 
     public String getId() {
@@ -210,5 +211,13 @@ public class MyJobDetails_ModelClass {
 
     public void setPay_type(String pay_type) {
         this.pay_type = pay_type;
+    }
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 }
