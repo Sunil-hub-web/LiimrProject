@@ -58,7 +58,6 @@ public class CategorySpinerAdapter extends ArrayAdapter<CategoryDetails_model> {
         TextView label = spinnerRow.findViewById(R.id.spinner_text);
         label.setText(String.format("%s", model != null ? model.getName() : ""));
 
-
         return spinnerRow;
     }
 

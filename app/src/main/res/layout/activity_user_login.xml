@@ -68,14 +68,14 @@
                     android:backgroundTint="#800080"/>
 
                 <EditText
-                    android:id="@+id/edit_Password"
+                    android:id="@+id/editpassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/edit_MobileNumber"
                     android:layout_marginLeft="@dimen/twenty_five"
                     android:layout_marginRight="@dimen/twenty_five"
                     android:layout_marginBottom="@dimen/twenty"
-                    android:drawableRight="@drawable/visibility"
+                    android:drawableRight="@drawable/baseline_visibility_off"
                     android:paddingRight="@dimen/ten"
                     android:ems="10"
                     android:paddingLeft="@dimen/ten"

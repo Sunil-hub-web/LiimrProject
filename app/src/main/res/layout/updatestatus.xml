@@ -86,7 +86,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/edittextsize"
                         android:layout_weight="1"
-                        android:text="2  Techician Allocated"
+                        android:text="2  Technician Allocated"
                         android:textColor="#1436F3"
                         android:textSize="@dimen/textsize"></TextView>
 
@@ -186,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/ten"
                 app:cardElevation="@dimen/one"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -200,7 +200,7 @@
                         android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/ten"
                         android:layout_weight="1"
-                        android:text="3  Allocated Techician / Pin Verification"
+                        android:text="3  Allocated Technician / Pin Verification"
                         android:textColor="#27A0D6"
                         android:textSize="@dimen/textsize"></TextView>
 
@@ -220,7 +220,7 @@
                         android:layout_marginLeft="@dimen/ten"
                         android:layout_marginTop="@dimen/ten"
                         android:layout_weight="1"
-                        android:text="Techician Allocated"
+                        android:text="Technician Allocated"
                         android:textColor="#505151"
                         android:textSize="@dimen/edittextsize"></TextView>
 

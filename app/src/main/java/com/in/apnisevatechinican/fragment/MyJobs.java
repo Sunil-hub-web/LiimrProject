@@ -74,7 +74,7 @@ public class MyJobs extends Fragment {
         myJobDetails.clear();
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Retrive MyJobs Details Please wait...");
+        progressDialog.setMessage("Loading Please wait...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, AppUrl.myJobsDetails, new Response.Listener<String>() {

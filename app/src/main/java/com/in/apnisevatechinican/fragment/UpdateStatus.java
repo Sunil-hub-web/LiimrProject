@@ -161,10 +161,14 @@ public class UpdateStatus extends Fragment {
 
         }else if(work_status.equals("Progress")){
 
+            orderstatues(orderid);
+
             rel_Pinverified.setVisibility(View.VISIBLE);
             pinVerifay.setVisibility(View.GONE);
 
         }else if(work_status.equals("Generated")){
+
+            orderstatues(orderid);
 
             finalWorkDetails.setVisibility(View.GONE);
             rel_WorkCompleted.setVisibility(View.VISIBLE);
@@ -180,9 +184,10 @@ public class UpdateStatus extends Fragment {
 
             ShowPrice.setText("Work Completed & Rs" +" " + Price +" " +"is due");
 
-            orderstatues(orderid);
 
         }else if(work_status.equals("Payment_done")){
+
+            orderstatues(orderid);
 
             rel_WorkCompleted.setVisibility(View.VISIBLE);
             rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
@@ -199,9 +204,6 @@ public class UpdateStatus extends Fragment {
             text.setTextColor(Color.WHITE);
             radio_RecievedCash.setVisibility(View.GONE);
             btn_CashApply.setVisibility(View.GONE);
-
-
-            orderstatues(orderid);
 
             rel_PaymentTobe.setVisibility(View.VISIBLE);
 
@@ -240,6 +242,8 @@ public class UpdateStatus extends Fragment {
             card_Payment.setClickable(false);
 
         }*/ else {
+
+            orderstatues(orderid);
 
             edit_Money.setText(Price);
             booking_price.setText(Price);
@@ -653,7 +657,7 @@ public class UpdateStatus extends Fragment {
     public void orderstatues(String orderId) {
 
         ProgressDialog progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setMessage("Update Statues Please wait...");
+        progressDialog.setMessage("Update Status Please wait...");
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, AppUrl.orderstatus, new Response.Listener<String>() {

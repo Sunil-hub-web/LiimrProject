@@ -76,7 +76,7 @@ public class UpdateServices extends Fragment {
         str_City = SharedPrefManager.getInstance(getActivity()).getUser().getCity();
         str_CityId = SharedPrefManager.getInstance(getActivity()).getUser().getCity_id();
 
-        text_category.setText(subcategory_Name);
+    //    text_category.setText(subcategory_Name);
 
         getCategory();
 
@@ -314,7 +314,7 @@ public class UpdateServices extends Fragment {
 
                         category_Name = SharedPrefManager.getInstance(getActivity()).getUser().getCategory();
 
-                        text_category.setText(category_Name);
+                        //text_category.setText(category_Name);
 
                     }
                 } catch (JSONException e) {

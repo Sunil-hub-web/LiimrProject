@@ -79,15 +79,15 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 if (edit_Password.getText().toString().trim().equals("")) {
 
                     edit_Password.setBackgroundTintList(ForgotPasswordActivity.this.getResources().getColorStateList(R.color.back1));
-                    Drawable img1 = edit_Password.getContext().getResources().getDrawable(R.drawable.visibility);
-                    edit_Password.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
+                    //Drawable img1 = edit_Password.getContext().getResources().getDrawable(R.drawable.baseline_visibility_off);
+                   // edit_Password.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
                     edit_Password.setCompoundDrawablePadding(25);
 
 
                 } else {
 
                     edit_Password.setBackgroundTintList(ForgotPasswordActivity.this.getResources().getColorStateList(R.color.black));
-                    edit_Password.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                    //edit_Password.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off, 0);
                     edit_Password.setCompoundDrawablePadding(25);
 
                 }
@@ -108,7 +108,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
 
                 if(edit_Password.getText().toString().trim().equals("")){
 
-                    edit_Password.setError("Fill The Fields");
+                    //edit_Password.setError("Fill Details");
 
                 }else{
 
@@ -121,7 +121,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             if (passwordVisiable) {
 
                                 //set Drawable Image here
-                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off, 0);
                                 // for show Password
                                 edit_Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                                 passwordVisiable = false;
@@ -129,7 +129,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             } else {
 
                                 //set Drawable Image here
-                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility, 0);
                                 // for show Password
                                 edit_Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                                 passwordVisiable = true;
@@ -140,6 +140,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                         }
                     }
                 }
+
                 return false;
             }
         });
@@ -158,15 +159,15 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 if (edit_ConfirmPassword.getText().toString().trim().equals("")) {
 
                     edit_ConfirmPassword.setBackgroundTintList(ForgotPasswordActivity.this.getResources().getColorStateList(R.color.back1));
-                    Drawable img1 = edit_ConfirmPassword.getContext().getResources().getDrawable(R.drawable.visibility);
-                    edit_ConfirmPassword.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
+                    //Drawable img1 = edit_ConfirmPassword.getContext().getResources().getDrawable(R.drawable.baseline_visibility_off);
+                    //edit_ConfirmPassword.setCompoundDrawablesWithIntrinsicBounds(null, null, img1, null);
                     edit_ConfirmPassword.setCompoundDrawablePadding(25);
 
 
                 } else {
 
                     edit_ConfirmPassword.setBackgroundTintList(ForgotPasswordActivity.this.getResources().getColorStateList(R.color.black));
-                    edit_ConfirmPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                    //edit_ConfirmPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off, 0);
                     edit_ConfirmPassword.setCompoundDrawablePadding(25);
 
                 }
@@ -185,10 +186,9 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-
                 if(edit_ConfirmPassword.getText().toString().trim().equals("")){
 
-                    edit_ConfirmPassword.setError("Fill The Fields");
+                    //edit_Password.setError("Fill Details");
 
                 }else{
 
@@ -201,7 +201,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             if (passwordVisiable) {
 
                                 //set Drawable Image here
-                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off, 0);
                                 // for show Password
                                 edit_ConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                                 passwordVisiable = false;
@@ -209,7 +209,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                             } else {
 
                                 //set Drawable Image here
-                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility, 0);
                                 // for show Password
                                 edit_ConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                                 passwordVisiable = true;
@@ -220,6 +220,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                         }
                     }
                 }
+
                 return false;
             }
         });

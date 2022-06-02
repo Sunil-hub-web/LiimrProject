@@ -1,5 +1,6 @@
 package com.in.apnisevatechinican;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +27,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.in.apnisevatechinican.Extra.AppUrl;
 import com.in.apnisevatechinican.R;
 import com.in.apnisevatechinican.modelclass.Login_ModelClass;
@@ -43,6 +47,7 @@ public class UserLogin extends AppCompatActivity {
     EditText edit_MobileNumber,edit_Password;
     String str_MobileNumber,str_Password;
     boolean passwordVisiable;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,11 +57,35 @@ public class UserLogin extends AppCompatActivity {
         btn_signin = findViewById(R.id.btn_signin);
         text_signUp = findViewById(R.id.text_signUp);
         edit_MobileNumber = findViewById(R.id.edit_MobileNumber);
-        edit_Password = findViewById(R.id.edit_Password);
+        edit_Password = findViewById(R.id.editpassword);
         text_ForgotPassword = findViewById(R.id.text_ForgotPassword);
+
+        sessionManager = new SessionManager(this);
 
         getSupportActionBar().hide();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("hgsavajshj", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        String token = task.getResult();
+                        sessionManager.setUserToken(token);
+
+
+                        // Log and toast
+                        //String msg = getString(R.string.msg_token_fmt, token);
+                        Log.d("hujasgugjgh", token);
+                        //Toast.makeText(LoginPage.this, token, Toast.LENGTH_LONG).show();
+                    }
+                });
+
 
         edit_Password.setOnTouchListener(new View.OnTouchListener() {
             @SuppressLint("ClickableViewAccessibility")
@@ -66,33 +95,31 @@ public class UserLogin extends AppCompatActivity {
 
                 if(edit_Password.getText().toString().trim().equals("")){
 
-                    edit_Password.setError("Fill the details");
+                    //edit_Password.setError("Fill Details");
 
                 }else{
 
                     final int Right = 2;
-                    if(event.getAction() == MotionEvent.ACTION_UP){
+                    if (event.getAction() == MotionEvent.ACTION_UP) {
 
-                        if(event.getRawX() >= edit_Password.getRight() - edit_Password.getCompoundDrawables()[Right].getBounds().width()){
+                        if (event.getRawX() >= edit_Password.getRight() - edit_Password.getCompoundDrawables()[Right].getBounds().width()) {
 
                             int selection = edit_Password.getSelectionEnd();
-                            if(passwordVisiable){
+                            if (passwordVisiable) {
 
                                 //set Drawable Image here
-                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.baseline_visibility_off,0);
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off, 0);
                                 // for show Password
                                 edit_Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                                 passwordVisiable = false;
-                                edit_Password.setCompoundDrawablePadding(15);
 
-                            }else{
+                            } else {
 
                                 //set Drawable Image here
-                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.baseline_visibility,0);
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility, 0);
                                 // for show Password
                                 edit_Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                                 passwordVisiable = true;
-                                edit_Password.setCompoundDrawablePadding(15);
                             }
 
                             edit_Password.setSelection(selection);
@@ -100,6 +127,7 @@ public class UserLogin extends AppCompatActivity {
                         }
                     }
                 }
+
                 return false;
             }
         });
@@ -122,7 +150,9 @@ public class UserLogin extends AppCompatActivity {
                     str_MobileNumber = edit_MobileNumber.getText().toString().trim();
                     str_Password = edit_Password.getText().toString().trim();
 
-                    userLogin(str_MobileNumber,str_Password);
+                    String token = sessionManager.getUserToken();
+
+                    userLogin(str_MobileNumber,str_Password,token);
                 }
 
             }
@@ -154,7 +184,7 @@ public class UserLogin extends AppCompatActivity {
         finish();
     }
 
-    public void userLogin(String key,String password){
+    public void userLogin(String key,String password,String token){
 
         ProgressDialog progressDialog = new ProgressDialog(UserLogin.this);
         progressDialog.setMessage("User Login Please wait...");
@@ -217,7 +247,7 @@ public class UserLogin extends AppCompatActivity {
 
                 progressDialog.dismiss();
                 error.printStackTrace();
-                Toast.makeText(UserLogin.this, ""+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserLogin.this, "API no response, Facing Technical issues, Try again!", Toast.LENGTH_SHORT).show();
 
             }
         }){
@@ -228,6 +258,7 @@ public class UserLogin extends AppCompatActivity {
                 Map<String,String> params = new HashMap<>();
                 params.put("key",key);
                 params.put("password",password);
+                params.put("token",token);
                 return params;
             }
         };

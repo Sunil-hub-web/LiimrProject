@@ -3,4 +3,5 @@
     <string name="entername">EnterName</string>
     <string name="entercontact">EnterContact</string>
     <string name="enteremail">EnterE_mail</string>
+    <string name="default_notification_channel_id">com.in.apnisevatechinican</string>
 </resources>

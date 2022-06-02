@@ -165,7 +165,7 @@ public class UserRegister extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                if(edit_Password.getText().toString().trim().equals("")){
+                if(edit_Password.getText().toString().trim().equals("edit_ConfirmPassword")){
 
                     edit_Password.setError("Fill Details");
 
@@ -180,7 +180,7 @@ public class UserRegister extends AppCompatActivity {
                             if (passwordVisiable) {
 
                                 //set Drawable Image here
-                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off, 0);
                                 // for show Password
                                 edit_Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                                 passwordVisiable = false;
@@ -188,7 +188,7 @@ public class UserRegister extends AppCompatActivity {
                             } else {
 
                                 //set Drawable Image here
-                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                edit_Password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility, 0);
                                 // for show Password
                                 edit_Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                                 passwordVisiable = true;
@@ -199,6 +199,7 @@ public class UserRegister extends AppCompatActivity {
                         }
                     }
                 }
+
                 return false;
             }
         });
@@ -220,11 +221,11 @@ public class UserRegister extends AppCompatActivity {
 
                         if (event.getRawX() >= edit_ConfirmPassword.getRight() - edit_ConfirmPassword.getCompoundDrawables()[Right].getBounds().width()) {
 
-                            int selection = edit_Password.getSelectionEnd();
+                            int selection = edit_ConfirmPassword.getSelectionEnd();
                             if (passwordVisiable) {
 
                                 //set Drawable Image here
-                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off, 0);
                                 // for show Password
                                 edit_ConfirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                                 passwordVisiable = false;
@@ -232,7 +233,7 @@ public class UserRegister extends AppCompatActivity {
                             } else {
 
                                 //set Drawable Image here
-                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility, 0);
+                                edit_ConfirmPassword.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility, 0);
                                 // for show Password
                                 edit_ConfirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                                 passwordVisiable = true;
@@ -362,7 +363,7 @@ public class UserRegister extends AppCompatActivity {
 
                 progressDialog.dismiss();
                 error.printStackTrace();
-                Toast.makeText(UserRegister.this, "error"+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserRegister.this, "API no response, Facing Technical issues, Try again!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -427,7 +428,7 @@ public class UserRegister extends AppCompatActivity {
 
                 progressDialog.dismiss();
                 error.printStackTrace();
-                Toast.makeText(UserRegister.this, "error"+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserRegister.this, "API no response, Facing Technical issues, Try again!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -494,7 +495,7 @@ public class UserRegister extends AppCompatActivity {
 
                 progressDialog.dismiss();
                 error.printStackTrace();
-                Toast.makeText(UserRegister.this, "error"+error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserRegister.this, "API no response, Facing Technical issues, Try again!", Toast.LENGTH_SHORT).show();
             }
         }){
 
@@ -556,7 +557,7 @@ public class UserRegister extends AppCompatActivity {
 
                 progressDialog.dismiss();
                 error.printStackTrace();
-                Toast.makeText(UserRegister.this, "Not Update", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserRegister.this, "API no response, Facing Technical issues, Try again!", Toast.LENGTH_SHORT).show();
 
             }
         }){

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "982021912706",
+    "project_id": "apniseva-technician",
+    "storage_bucket": "apniseva-technician.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:982021912706:android:2a1be1c716458916091c9b",
+        "android_client_info": {
+          "package_name": "com.in.apnisevatechinican"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "982021912706-mfiqv4j5trai67b63ofdb91au5e7gls9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA21ifnJnMi6-fhv7caDjdMEg0ChRIg70I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "982021912706-mfiqv4j5trai67b63ofdb91au5e7gls9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
