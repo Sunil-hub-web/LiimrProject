@@ -479,7 +479,6 @@
                             android:layout_weight="1"
                             android:background="@drawable/workingdetails_bg"
                             android:paddingLeft="@dimen/ten"
-                            android:text="1500"
                             android:textColor="#0E0E0E"
                             android:textSize="@dimen/edittextsize" />
 
@@ -595,13 +594,16 @@
                                android:id="@+id/priceAmount"
                                android:layout_width="wrap_content"
                                android:layout_height="wrap_content"
-                               android:layout_margin="@dimen/three"
-                               android:text="1500"
-                               android:layout_centerHorizontal="true"
                                android:layout_below="@+id/text"
+                               android:layout_centerHorizontal="true"
+                               android:layout_marginStart="@dimen/three"
+                               android:layout_marginTop="@dimen/three"
+                               android:layout_marginEnd="@dimen/three"
+                               android:layout_marginBottom="@dimen/three"
+                               android:text="1500"
                                android:textColor="#000000"
-                               android:textStyle="bold"
-                               android:textSize="@dimen/textsize">
+                               android:textSize="@dimen/textsize"
+                               android:textStyle="bold">
 
                            </TextView>
                        </RelativeLayout>

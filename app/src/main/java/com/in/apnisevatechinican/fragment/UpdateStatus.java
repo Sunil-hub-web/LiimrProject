@@ -3,6 +3,7 @@ package com.in.apnisevatechinican.fragment;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,12 +45,13 @@ public class UpdateStatus extends Fragment {
     CardView finalWorkDetails, pinVerifay, card_Payment, card_AllocatedTechician, card_WorkInfo;
     RelativeLayout rel_Pinverified, rel_WorkCompleted, rel_PaymentTobe;
     Button btn_CashApply, btn_CashPaidAopply, btn_PinVerifyApply;
-    EditText edit_VerifythePin, edit_CompleteAddress;
+    EditText edit_VerifythePin, edit_CompleteAddress, filal_Money, edit_Money;
     RadioButton radio_RecievedCash;
-    TextView text, edit_Money, booking_price, priceAmount, ShowPrice, text_name, text_contact,text_TechicianName;
+    TextView text, booking_price, priceAmount, ShowPrice, text_name, text_contact, text_TechicianName;
     String Pin_verification_status, Book_pay_status, Price, user_Id, orderid, str_technicianName,
-            str_TechnicianMobile, str_TechnicianImage, work_status,str_TechnicianImage1;
+            str_TechnicianMobile, str_TechnicianImage, work_status, str_TechnicianImage1;
     CircleImageView profile_image;
+    int extra_amt;
 
     @Nullable
     @Override
@@ -83,6 +85,7 @@ public class UpdateStatus extends Fragment {
         text_contact = view.findViewById(R.id.text_contact);
         profile_image = view.findViewById(R.id.profile_image);
         text_TechicianName = view.findViewById(R.id.text_TechicianName);
+        filal_Money = view.findViewById(R.id.filal_Money);
 
         rel_Pinverified.setVisibility(View.GONE);
         rel_WorkCompleted.setVisibility(View.GONE);
@@ -91,13 +94,50 @@ public class UpdateStatus extends Fragment {
         btn_CashApply.setVisibility(View.GONE);
 
         //Retrieve the value
-        Pin_verification_status = getArguments().getString("Pin_verification_status");
-        Book_pay_status = getArguments().getString("Book_pay_status");
-        Price = getArguments().getString("Price");
         orderid = getArguments().getString("orderid");
-        work_status = getArguments().getString("work_status");
 
         orderstatues(orderid);
+
+       /* Pin_verification_status = getArguments().getString("Pin_verification_status");
+        Book_pay_status = getArguments().getString("Book_pay_status");
+        Price = getArguments().getString("Price");
+        work_status = getArguments().getString("work_status");*/
+
+        if (Book_pay_status.equals("online")) {
+
+            rel_PaymentTobe.setVisibility(View.VISIBLE);
+
+            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
+
+            priceAmount.setVisibility(View.GONE);
+            text.setText("Paid");
+            text.setTextColor(Color.WHITE);
+            radio_RecievedCash.setVisibility(View.GONE);
+            btn_CashApply.setVisibility(View.GONE);
+
+            edit_Money.setText(Price);
+            booking_price.setText("0");
+
+            ShowPrice.setText("Work Completed");
+
+            card_Payment.setClickable(false);
+
+        } else {
+
+            edit_Money.setText(Price);
+            booking_price.setText(Price);
+
+            finalWorkDetails.setVisibility(View.GONE);
+            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+
+            priceAmount.setText(Price);
+
+            card_Payment.setClickable(true);
+
+            radio_RecievedCash.setVisibility(View.VISIBLE);
+            btn_CashApply.setVisibility(View.VISIBLE);
+
+        }
 
         user_Id = SharedPrefManager.getInstance(getActivity()).getUser().getUserid();
 
@@ -108,158 +148,6 @@ public class UpdateStatus extends Fragment {
         text_name.setText(str_technicianName);
         text_contact.setText(str_TechnicianMobile);
         Picasso.with(getActivity()).load(str_TechnicianImage).placeholder(R.drawable.no_avatar).into(profile_image);
-
-        if (Pin_verification_status.equals("0")) {
-
-            rel_Pinverified.setVisibility(View.GONE);
-
-        } else {
-
-            rel_Pinverified.setVisibility(View.VISIBLE);
-
-        }
-
-        /*if (Book_pay_status.equals("online")) {
-
-            rel_PaymentTobe.setVisibility(View.VISIBLE);
-
-            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
-
-            priceAmount.setVisibility(View.GONE);
-            text.setText("Paid");
-            text.setTextColor(Color.WHITE);
-            radio_RecievedCash.setVisibility(View.GONE);
-            btn_CashApply.setVisibility(View.GONE);
-
-            edit_Money.setText(Price);
-            booking_price.setText("0");
-
-            ShowPrice.setText("Work Completed");
-
-            card_Payment.setClickable(false);
-
-        } else {
-
-            edit_Money.setText(Price);
-            booking_price.setText(Price);
-
-            finalWorkDetails.setVisibility(View.GONE);
-            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
-
-            priceAmount.setText(Price);
-
-            card_Payment.setClickable(true);
-
-            radio_RecievedCash.setVisibility(View.VISIBLE);
-            btn_CashApply.setVisibility(View.VISIBLE);
-
-        }*/
-
-        if(work_status.equals("Allocated")){
-
-            orderstatues(orderid);
-
-        }else if(work_status.equals("Progress")){
-
-            orderstatues(orderid);
-
-            rel_Pinverified.setVisibility(View.VISIBLE);
-            pinVerifay.setVisibility(View.GONE);
-
-        }else if(work_status.equals("Generated")){
-
-            orderstatues(orderid);
-
-            finalWorkDetails.setVisibility(View.GONE);
-            rel_WorkCompleted.setVisibility(View.VISIBLE);
-            radio_RecievedCash.setVisibility(View.VISIBLE);
-            btn_CashApply.setVisibility(View.VISIBLE);
-
-            ///Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
-
-            rel_PaymentTobe.setVisibility(View.VISIBLE);
-            priceAmount.setText(Price);
-
-            card_Payment.setClickable(true);
-
-            ShowPrice.setText("Work Completed & Rs" +" " + Price +" " +"is due");
-
-
-        }else if(work_status.equals("Payment_done")){
-
-            orderstatues(orderid);
-
-            rel_WorkCompleted.setVisibility(View.VISIBLE);
-            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
-            rel_PaymentTobe.setVisibility(View.VISIBLE);
-            priceAmount.setVisibility(View.GONE);
-            text.setText("Paid");
-            text.setTextColor(Color.WHITE);
-            radio_RecievedCash.setVisibility(View.GONE);
-            btn_CashApply.setVisibility(View.GONE);
-
-            priceAmount.setVisibility(View.GONE);
-            text.setText("Paid");
-            ShowPrice.setText("Work Completed");
-            text.setTextColor(Color.WHITE);
-            radio_RecievedCash.setVisibility(View.GONE);
-            btn_CashApply.setVisibility(View.GONE);
-
-            rel_PaymentTobe.setVisibility(View.VISIBLE);
-
-            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
-
-            priceAmount.setVisibility(View.GONE);
-            text.setText("Paid");
-            text.setTextColor(Color.WHITE);
-            radio_RecievedCash.setVisibility(View.GONE);
-            btn_CashApply.setVisibility(View.GONE);
-
-            edit_Money.setText(Price);
-            booking_price.setText("0");
-
-            ShowPrice.setText("Work Completed");
-
-            card_Payment.setClickable(false);
-
-        } /*else if (Book_pay_status.equals("online")) {
-
-            rel_PaymentTobe.setVisibility(View.VISIBLE);
-
-            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
-
-            priceAmount.setVisibility(View.GONE);
-            text.setText("Paid");
-            text.setTextColor(Color.WHITE);
-            radio_RecievedCash.setVisibility(View.GONE);
-            btn_CashApply.setVisibility(View.GONE);
-
-            edit_Money.setText(Price);
-            booking_price.setText("0");
-
-            ShowPrice.setText("Work Completed");
-
-            card_Payment.setClickable(false);
-
-        }*/ else {
-
-            orderstatues(orderid);
-
-            edit_Money.setText(Price);
-            booking_price.setText(Price);
-
-            finalWorkDetails.setVisibility(View.GONE);
-            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
-
-            priceAmount.setText(Price);
-
-            card_Payment.setClickable(true);
-
-            radio_RecievedCash.setVisibility(View.VISIBLE);
-            btn_CashApply.setVisibility(View.VISIBLE);
-
-        }
-
 
 
         card_AllocatedTechician.setOnClickListener(new View.OnClickListener() {
@@ -368,18 +256,24 @@ public class UpdateStatus extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(edit_CompleteAddress.getText().toString().trim().equals("")){
+                if (edit_CompleteAddress.getText().toString().trim().equals("")) {
 
                     edit_CompleteAddress.setError("Fill the work details");
                     edit_CompleteAddress.setFocusable(true);
 
-                }else {
+                } else if (filal_Money.getText().toString().trim().equals("")) {
+
+                    filal_Money.setError("add money");
+                    filal_Money.setFocusable(true);
+
+                } else {
 
                     String str_CompleteAddress = edit_CompleteAddress.getText().toString().trim();
+                    String str_filalMoney = filal_Money.getText().toString().trim();
 
-                    workinfo(orderid,Price,str_CompleteAddress);
+                    workinfo(orderid, str_filalMoney, str_CompleteAddress);
 
-                    if(finalWorkDetails.getVisibility() == View.VISIBLE) {
+                    if (finalWorkDetails.getVisibility() == View.VISIBLE) {
 
                         if (booking_price.getText().toString().trim().equals("0")) {
 
@@ -396,7 +290,7 @@ public class UpdateStatus extends Fragment {
                             radio_RecievedCash.setVisibility(View.GONE);
                             btn_CashApply.setVisibility(View.GONE);
 
-                            edit_Money.setText(Price);
+                            //edit_Money.setText(Price);
                             booking_price.setText("0");
                             ShowPrice.setText("Work Completed");
 
@@ -414,17 +308,18 @@ public class UpdateStatus extends Fragment {
                             ///Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
 
                             rel_PaymentTobe.setVisibility(View.VISIBLE);
-                            priceAmount.setText(Price);
 
                             String money = edit_Money.getText().toString().trim();
                             double price = Double.valueOf(money);
-                            double price1 = Double.valueOf(money);
-                            double totalprice = price+price1;
+                            double price1 = Double.valueOf(Price);
+                            double totalprice = price + price1;
                             String str_total = String.valueOf(totalprice);
 
                             card_Payment.setClickable(true);
 
-                            ShowPrice.setText("Work Completed & Rs" +" " + str_total +" " +"is due");
+                            priceAmount.setText(str_total);
+
+                            ShowPrice.setText("Work Completed & Rs" + " " + str_total + " " + "is due");
 
                             orderstatues(orderid);
 
@@ -439,11 +334,11 @@ public class UpdateStatus extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(radio_RecievedCash.isChecked()){
+                if (radio_RecievedCash.isChecked()) {
 
-                    paymentcash(orderid,"cash");
+                    paymentcash(orderid, "cash");
 
-                }else{
+                } else {
 
                     Toast.makeText(getActivity(), "Check radio button", Toast.LENGTH_SHORT).show();
                 }
@@ -685,17 +580,154 @@ public class UpdateStatus extends Fragment {
                         Pin_verification_status = jsonObject_booking.getString("pin_verification_status");
                         Book_pay_status = jsonObject_booking.getString("book_pay_status");
                         work_status = jsonObject_booking.getString("work_status");
+                        extra_amt = jsonObject_booking.getInt("extra_amt");
 
                         str_technicianName = jsonObject_technician.getString("name");
                         str_TechnicianMobile = jsonObject_technician.getString("mobile");
                         str_TechnicianImage1 = jsonObject_technician.getString("profile_img");
 
-                       // Picasso.with(getActivity()).load(str_TechnicianImage1).placeholder(R.drawable.no_avatar).into(profile_image);
+                        // Picasso.with(getActivity()).load(str_TechnicianImage1).placeholder(R.drawable.no_avatar).into(profile_image);
 
-                        if(str_technicianName != null){
+                        if (str_technicianName != null) {
 
                             text_TechicianName.setText(str_technicianName);
                         }
+
+                        if (Pin_verification_status.equals("0")) {
+
+                            rel_Pinverified.setVisibility(View.GONE);
+
+                        } else {
+
+                            rel_Pinverified.setVisibility(View.VISIBLE);
+
+                        }
+
+                        if (work_status.equals("Allocated")) {
+
+                            //orderstatues(orderid);
+
+                            text_TechicianName.setText(str_technicianName);
+
+                        } else if (work_status.equals("Progress")) {
+
+                            //orderstatues(orderid);
+
+                            rel_Pinverified.setVisibility(View.VISIBLE);
+                            pinVerifay.setVisibility(View.GONE);
+                            booking_price.setText(Price);
+
+                        } else if (work_status.equals("Generated")) {
+
+                            //orderstatues(orderid);
+
+                            finalWorkDetails.setVisibility(View.GONE);
+                            rel_WorkCompleted.setVisibility(View.VISIBLE);
+                            radio_RecievedCash.setVisibility(View.VISIBLE);
+                            btn_CashApply.setVisibility(View.VISIBLE);
+
+                            ///Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+
+                            rel_PaymentTobe.setVisibility(View.VISIBLE);
+                            //priceAmount.setText(Price);
+                            booking_price.setText(Price);
+
+                            card_Payment.setClickable(true);
+
+                            Double d_price = Double.valueOf(Price);
+                            Double d_extraprice = Double.valueOf(extra_amt);
+                            double total = d_price + d_extraprice;
+                            String totalAmount = String.valueOf(total);
+
+                            ShowPrice.setText("Work Completed & Rs" + " " + totalAmount + " " + "is due");
+                            priceAmount.setText(totalAmount);
+
+
+                        } else if (work_status.equals("Payment_done")) {
+
+                            //orderstatues(orderid);
+
+                            rel_WorkCompleted.setVisibility(View.VISIBLE);
+                            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
+                            rel_PaymentTobe.setVisibility(View.VISIBLE);
+                            priceAmount.setVisibility(View.GONE);
+                            text.setText("Paid");
+                            text.setTextColor(Color.WHITE);
+                            radio_RecievedCash.setVisibility(View.GONE);
+                            btn_CashApply.setVisibility(View.GONE);
+
+                            priceAmount.setVisibility(View.GONE);
+                            text.setText("Paid");
+                            ShowPrice.setText("Work Completed");
+                            text.setTextColor(Color.WHITE);
+                            radio_RecievedCash.setVisibility(View.GONE);
+                            btn_CashApply.setVisibility(View.GONE);
+
+                            rel_PaymentTobe.setVisibility(View.VISIBLE);
+
+                            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
+
+                            priceAmount.setVisibility(View.GONE);
+                            text.setText("Paid");
+                            text.setTextColor(Color.WHITE);
+                            radio_RecievedCash.setVisibility(View.GONE);
+                            btn_CashApply.setVisibility(View.GONE);
+
+                            double d_price = Double.valueOf(Price);
+                            double d_extraprice = Double.valueOf(extra_amt);
+                            double total = d_price + d_extraprice;
+                            String totalAmount = String.valueOf(total);
+
+                            edit_Money.setText(totalAmount);
+                            booking_price.setText(totalAmount);
+
+                            ShowPrice.setText("Work Completed");
+
+                            card_Payment.setClickable(false);
+
+                        } else if (Book_pay_status.equals("online")) {
+
+                            rel_PaymentTobe.setVisibility(View.VISIBLE);
+
+                            rel_PaymentTobe.setBackgroundResource(R.drawable.updateconfrom_bg);
+
+                            priceAmount.setVisibility(View.GONE);
+                            text.setText("Paid");
+                            text.setTextColor(Color.WHITE);
+                            radio_RecievedCash.setVisibility(View.GONE);
+                            btn_CashApply.setVisibility(View.GONE);
+
+                            edit_Money.setText(Price);
+                            booking_price.setText("0");
+
+                            ShowPrice.setText("Work Completed");
+
+                            card_Payment.setClickable(false);
+
+                        } else {
+
+                            //orderstatues(orderid);
+
+                            //edit_Money.setText(Price);
+                            booking_price.setText(Price);
+
+                            finalWorkDetails.setVisibility(View.GONE);
+                            Toast.makeText(getActivity(), "Success", Toast.LENGTH_SHORT).show();
+
+                            double d_price = Double.valueOf(Price);
+                            double d_extraprice = Double.valueOf(extra_amt);
+                            double total = d_price + d_extraprice;
+                            String totalAmount = String.valueOf(total);
+
+                            priceAmount.setText(totalAmount);
+
+                            card_Payment.setClickable(true);
+
+                            radio_RecievedCash.setVisibility(View.VISIBLE);
+                            btn_CashApply.setVisibility(View.VISIBLE);
+
+                        }
+
 
                     }
                 } catch (JSONException e) {
@@ -729,8 +761,5 @@ public class UpdateStatus extends Fragment {
         requestQueue.add(stringRequest);
 
     }
-
-
-
 
 }
